@@ -321,7 +321,7 @@ var csrftoken = getToken('csrftoken');
               </a>
             </div>
             <div class="btn-group icons_menu">
-              <a href="/update_item/" class="btn dropdown-toggle cart  " id="hobu"> <!--  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" -->
+              <a href="/cart/" class="btn dropdown-toggle cart  " id="hobu"> <!--  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" -->
                 <i class="fas fa-cart-plus"></i>
                 <span class=" "  >0</span>
               </a>
@@ -711,7 +711,8 @@ var csrftoken = getToken('csrftoken');
     {% block add_js %}
     {% endblock %}
 
-  <script type='text/javascript' src="{% static 'js/cart.js' %}"></script>
+   
+   <script src="/static/Js/user-side-js/cart.js"></script>
     
 {% comment %} {% block challenge_js %}
 <script type='text/javascript' src="{% static 'js/cart.js' %}"></script>

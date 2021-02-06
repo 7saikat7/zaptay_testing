@@ -679,30 +679,56 @@ class viewallSubCategory(TemplateView):
 # *************************************** Handeling cart *******************************
 import json 
 import requests
+
+def cart(request):
+    return render(request,'user_templates/productView/cart.html')
+
 def updateItem(request):
-    print('so the problem is here ------------')
-    
-    # data=requests.body.decode('utf-8')
-    # receice_data=json.loads(data)
+
+        data = json.loads(request.body)
+        productId = data['productId']
+        action = data['action']
+        print('Action:', action)
+        print('Product:', productId)
+
+        customer = request.user
+        product = Productmod.objects.get(id=productId)
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+        orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+        if action == 'add':
+            orderItem.quantity = (orderItem.quantity + 1)
+        elif action == 'remove':
+            orderItem.quantity = (orderItem.quantity - 1)
+
+            orderItem.save()
+            if orderItem.quantity == 0:
+                orderItem.delete()
+
+        return JsonResponse('Item was added', safe=False)
+
+    # # data=requests.body.decode('utf-8')
+    # # receice_data=json.loads(data)
    
-    # print(receice_data)
-    task=json.loads(request.body)
+    # # print(receice_data)
+    # task=json.loads(request.body)
 
     
    
-    print('it is printing it so the problem is not here ')
-    Productid=data['productId']
-    Action=data['action']
-    print(Productid)
-    # print('Productid:',Productid)
-    # print('Action:',Action)
+    # print('it is printing it so the problem is not here ')
+    # Productid=data['productId']
+    # Action=data['action']
+    # print(Productid)
+    # # print('Productid:',Productid)
+    # # print('Action:',Action)
 
-    customer = request.user
-    product=Productmod.objects.get(id=Productid)
-    order,created =Productmod.objects.get_or_create(customer=customer)
-    orderItem ,created =Productid.objects.get_or_create(order=order,product=product) ## glitch point 
+    # customer = request.user
+    # product=Productmod.objects.get(id=Productid)
+    # order,created =Productmod.objects.get_or_create(customer=customer)
+    # orderItem ,created =Productid.objects.get_or_create(order=order,product=product) ## glitch point 
 
-    return JsonResponse('item was added to cart ', safe=False)
+    # return JsonResponse('item was added to cart ', safe=False)
 
 # ******************************************************************************************************************
 # Ajax hendel
@@ -927,10 +953,6 @@ def PODSingleProdpage(request):
 
     podu = list(prod)
 
-    return JsonResponse({
-        'prod': podu,
-    })
-# =============================== single product page end =====================================================
 
 
 

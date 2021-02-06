@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
-from home import views
+from .import views
 
 app_name = 'home'
 
@@ -13,6 +13,7 @@ urlpatterns = [
     path('Indianhatt/',views.IndianHatt.as_view(),name="indianHatt"),
     path('b2b/', views.b2b.as_view(), name="b2b"),
     path('update_item/',views.updateItem,name='update_item'),
+    path('cart/',views.cart,name='cart'),
 
 
     #LOGIN

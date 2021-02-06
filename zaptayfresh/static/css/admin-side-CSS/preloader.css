@@ -1,0 +1,13 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+#loading{
+    position: fixed;
+ width: 100%;
+ height: 100vh;
+ background:#fff url('/static/preloader/loading.gif') no-repeat center ;
+ z-index: 999999;
+}

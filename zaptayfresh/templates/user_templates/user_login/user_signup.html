@@ -1,0 +1,111 @@
+{% extends "user_templates/base_user.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block add_css %}
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_login/login.css">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+  <div class="login_form_section">
+    <div class="login_form_div">
+      <h4 class="text-primary">Log In to your Zaptay Account</h4>
+      <hr />
+      <!-- <button type="button" class="btn btn-primary">Primary</button> -->
+      <div class="login_form">
+        <!--  -->
+
+
+
+
+               <h2 class="text-success text-center">{{db_error}}<br>{{error}}<br>{{error2}}<br>{{A}}<br>{{not_match}}</h2> 
+        {% comment %} <form method="POST" action="{% url 'home:user_signuppage' %}"> {% endcomment %}
+       <form method="POST" action="{% url 'home:user_signuppage' %}">
+          {% csrf_token %}
+
+          <div class="alert alert-danger alert-dismissible fade" role="alert">
+            <strong class="error_title">Holy guacamole!</strong> <span class="error_message"></span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-user"></i></div> 
+            </div>
+            <!-- EMAIL FIELD -->
+            <input type="text" class="form-control" id="fname" placeholder="Full Name" name="fname">
+
+          </div>
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="far fa-envelope"></i></div>
+            </div>
+            <!-- EMAIL FIELD -->
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+
+          </div>
+
+          {% comment %} <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-phone-alt"></i></div>
+            </div>
+             <!-- EMAIL FIELD -->
+            <input type="number" class="form-control" id="loginId" placeholder="Phone No" name="pno"> 
+
+          </div>{% endcomment %}
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-lock"></i></div>
+            </div> 
+            <!-- PASSWORD FIELD -->
+            <input type="password" class="form-control" id="password" placeholder="Password" name="pwd">
+          
+          </div>
+           <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-lock"></i></div>
+            </div> 
+            <!-- PASSWORD FIELD -->
+            <input type="password" class="form-control" id="password2" placeholder="Re Enter Password" name="pwd2">
+          
+          </div>
+
+
+          <!-- <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="fas fa-lock"></i></div>
+            </div>
+            
+            <input type="password" class="form-control" id="password" placeholder="Password" name="pwd">
+          
+          </div> -->
+        
+          <button type="submit" class="btn btn-primary btn-lg btn-block login_btn"  style="background-color: #0064ff; border-color:#0064ff ;">
+            <i class="fas fa-spinner fa-spin"></i>
+            <span class="button_title">Sign Up</span>
+          </button>
+
+        </form>
+
+        <div class="forgot_pwd_div">
+          Or <a href="">Forget Password</a>
+        </div>
+        <div>
+          Have an account already ? <a href="{% url 'home:user_loginpage' %}">Log In</a>   
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block add_js %}
+<script src="/static/Js/user-side-js/user_login/login.js"></script>
+{% endblock %} 
+

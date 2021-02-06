@@ -1,0 +1,383 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- External Styling -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/all_page.css' %}">
+    <!-- Additional CSS -->
+    {% block add_css %}
+    {% endblock %}
+  </head>
+  <body>
+    <div class="nav_bar">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+            <span>
+              <i class="fa fa-map-marker location" aria-hidden="true"></i>
+              <span>Kolkata 700070</span>
+            </span>
+          </div>
+
+          <div class="col-md-1">
+            <span><a href="{% url 'homepage' %}">Zaptay.com</a></span>
+          </div>
+
+          <div class="col-md-6">
+            <span>
+              <input type="search" name="search_item" class="searchbox" placeholder="Search Items" />
+              <label class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></label>
+              <div class="search_result">
+                <div class="search_items_space">
+                  <div class="search_items">
+                    <div class="item_name">
+                      <span>Samsung Galary</span>
+                    </div>
+                    <div class="item_name">
+                      <span>Nokia 3300</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+
+          <div class="col-md-2">
+            {% if login_user %}
+              <span><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;<a href="javascript:void(0);">{{ login_user.0.name }}</a></span>
+            {% else %}
+              <span><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;<a href="javascript:void(0);" class="login">Login</a> / <a href="javascript:void(0);" class="register">Registration</a></span>
+            {% endif %}
+          </div>
+
+          <div class="col-md-1">
+            <span class="cart">
+              <i class="fa fa-heart" aria-hidden="true"></i><sup class="cart_number">{{ total_wish_list }}</sup> <i class="fa fa-shopping-cart" aria-hidden="true"></i><sup class="cart_number">{{ total_cart_list }}</sup>
+              <!-- Drop down for cart Items -->
+              <div class="dropdown-menu dropdown-menu-right cart-dropdown-menu">
+                <h5 class="dropdown-header">Cart Items <small>({{ total_cart_list }})</small></h5>
+                {% if cart_product %}
+                  {% for cart_list in cart_product %}
+                    <a class="dropdown-item" href="#">
+                      <span><img src="{% static '/site_image/banner1.jpg' %}" alt="" class="cart_item_image"></span>
+                      <span>{{ cart_list.product_id.prod_title }}</span>
+                    </a>
+                  {% endfor %}
+                {% endif %}
+                <!-- <a class="dropdown-item" href="#">
+                  <span><img src="{% static '/site_image/banner1.jpg' %}" alt="" class="cart_item_image"></span>
+                  <span>Product Name</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                  <span><img src="{% static '/site_image/banner1.jpg' %}" alt="" class="cart_item_image"></span>
+                  <span>Product Name</span>
+                </a> -->
+                <a class="dropdown-item" href="#">
+                  <span>Show more</span>
+                </a>
+
+                <!-- Wish Listt Items -->
+                <h5 class="dropdown-header">Wish List Items <small>({{ total_wish_list }})</small></h5>
+                {% if wish_list_product %}
+                  {% for wish_list in wish_list_product %}
+                    <a class="dropdown-item" href="#">
+                      <span><img src="{% static '/site_image/banner1.jpg' %}" alt="" class="cart_item_image"></span>
+                      <span>{{ wish_list.product_id.prod_title }}</span>
+                    </a>
+                  {% endfor %}
+                {% endif %}
+                <!-- <a class="dropdown-item" href="#">
+                  <span><img src="{% static '/site_image/banner1.jpg' %}" alt="" class="cart_item_image"></span>
+                  <span>Product Name</span>
+                </a>
+                <a class="dropdown-item" href="#">
+                  <span><img src="{% static '/site_image/banner1.jpg' %}" alt="" class="cart_item_image"></span>
+                  <span>Product Name</span>
+                </a> -->
+                <a class="dropdown-item" href="#">
+                  <span>Show more</span>
+                </a>
+                <!-- /Wish Listt Items -->
+
+              </div>
+              <!-- /Drop down for cart Items -->
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="top_nav_menu">
+      <span><a href="#">Best Seller</a></span>
+      <span><a href="#">Supper Deal</a></span>
+      <span><a href="#">Membership Zoom</a></span>
+      <span><a href="#">Event Coupon</a></span>
+      <span><a href="#">Send Gift</a></span>
+    </div>
+    <div class="menu">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- <div class="col-md-1"><span>Men</span></div>
+          <div class="col-md-1"><span>Women</span></div>
+          <div class="col-md-1"><span>Baby&kids</span></div> -->
+          <!-- <div><div class="item_category">Electronics</div></div> -->
+          <!-- <div class="col-md-1"><span>Mobile</span></div>
+          <div class="col-md-2"><span>Home appliance</span></div>
+          <div class="col-md-2"><span>Office appliance</span></div>
+          <div class="col-md-2"><span>Indian haat</span></div> -->
+          <div class="col-md-12">
+            <div class="menu_item">
+              <span class="item_category">
+                <a href="{% url 'category:category_name' 'men' %}">Men</a>
+              </span>
+              <span class="item_category">
+                <a href="{% url 'category:category_name' 'women' %}">WoMen</a>
+              </span>
+              <span class="item_category">Baby&kids</span>
+              <span class="item_category">Electronics</span>
+              <span class="item_category">Mobile</span>
+              <span class="item_category">Home appliance</span>
+              <span class="item_category">Office appliance</span>
+              <span class="item_category">Indian haat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Menu -->
+
+    <!-- <div class="container-fluid"> -->
+    <!-- <div> -->
+      {% block content %}
+
+      {% endblock %}
+
+    <!-- </div> -->
+
+    <!-- Modal -->
+    <div class="my_modal_div modal_message">
+      <div class="my_modal">
+        <div class="close">
+          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="modal_heading">
+          <span>Test header</span>
+        </div>
+        <div class="modal_body">
+          <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <!-- /Modal -->
+
+    <!-- Login Modal -->
+    <div class="my_modal_div my_login_modal_div">
+      <div class="my_modal">
+        <div class="close login_close">
+          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="modal_heading">
+          <span><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+          <span>Login</span>
+        </div>
+        <div class="modal_body">
+          <form method="POST">
+            <div class="error_message login_error_message">
+              <span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+              <span class="login_message">Error Message</span>
+            </div>
+            <input type="email" name="email_id" class="input" placeholder="Email Id" />
+            <input type="password" name="password" class="input" placeholder="Password" />
+            <div class="forget_pwd">Forget password?</div>
+            <button onclick="return CheckLogin();"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</button>
+          </form>
+          <div class="social_login">
+            <div class="social_icons">
+              <span class="fb"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+              <span class="twee"><i class="fa fa-twitter" aria-hidden="true"></i></span>
+              <span class="insta"><i class="fa fa-instagram" aria-hidden="true"></i></span>
+              <span class="goog"><i class="fa fa-google" aria-hidden="true"></i></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Login Modal -->
+
+    <!-- Register Modal -->
+    <div class="my_modal_div my_reg_modal_div">
+      <div class="my_modal">
+        <div class="close reg_close">
+          <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </div>
+        <div class="modal_heading">
+          <span><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span>
+          <span>Register</span>
+        </div>
+        <div class="modal_body">
+          <form method="POST">
+            <div class="error_message">
+              <span><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></span>
+              <span class="e_message"></span>
+            </div>
+            <input type="text" name="f_name" class="input name" placeholder="First name" />
+            <input type="text" name="l_name" class="input name" placeholder="Last name" />
+            <div>
+              <label>Gender</label>
+              <input type="radio" name="gender" value="male"/> Male
+              <input type="radio" name="gender" value="female" /> Female
+            </div>
+            <input type="email" name="email" class="input" placeholder="Email Id" />
+            <input type="password" name="pwd" class="input" placeholder="Password" />
+            <input type="password" name="c_pwd" class="input" placeholder="Confirm password" />
+            <button type="button" onclick="return CheckDetails();"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /Register Modal -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="footer_logo">
+              <span>Zaptay.com</span>
+            </div>
+            <div class="footer_address">
+              <span>Sodhpure, Kolkata -700 110, West Bengal</span>
+            </div>
+            <div class="social_links">
+              <div class="title">
+                <span>Social media links:</span>
+              </div>
+              <div class="links">
+                <a href="javascript:void(0);" class="facebook">
+                  <div class="logos"><i class="fa fa-facebook" aria-hidden="true"></i></div>
+                </a>
+                <a href="javascript:void(0);" class="tweeter">
+                  <div class="logos"><i class="fa fa-twitter" aria-hidden="true"></i></div>
+                </a>
+                <a href="javascript:void(0);" class="tweeter">
+                  <div class="logos"><i class="fa fa-linkedin" aria-hidden="true"></i></div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="policies">
+              <span class="title">Policies</span>
+              <div class="all_polices">
+                <ul>
+                  <li>Return Polices</li>
+                  <li>Term Polices</li>
+                  <li>Privacy Polices</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="customer">
+              <span class="title">Customer Care</span>
+              <div class="all_polices">
+                <ul>
+                  <li>Account Login</li>
+                  <li>Shoping Cart</li>
+                  <li>About us</li>
+                  <li>Contact us</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="b2b">
+              <span class="title">B2B Information</span>
+              <div class="all_polices">
+                <ul>
+                  <li>Account Login</li>
+                  <li>Shoping Cart</li>
+                  <li>About us</li>
+                  <li>Contact us</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="newsletter">
+              <div class="title">
+                <span>Newsletter Signup</span>
+              </div>
+              <div class="descp">
+                <span>Sign up for our email and be first who know our special offers! Further more, we will give a 15% discount on next dore after you sign up.</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="subscribe">
+              <div class="title">
+                <span>subscribe now</span>
+              </div>
+              <div class="get_email">
+                <!-- <input type="email" />
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> -->
+
+                <div class="form-group">
+                  <div class="input-group">
+
+                    <input class="form-control" id="email" name="email" type="text"/>
+                    <div class="input-group-addon">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="payment_options">
+              <span class="title">Accepted payment option</span>
+            </div>
+            <div class="payment_images">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copy_write">
+        <span>2020 &copy; Zaptay.com. All right resurved</span>
+      </div>
+    </footer>
+    <!-- /Footer -->
+
+    <!-- Bootstrap4 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Custom Scripts -->
+    <script src="{% static 'js/login_register_popup.js'%}"></script>
+    <!-- /Custom Scripts -->
+
+    {% block add_js %}
+    {% endblock %}
+
+  </body>
+</html>

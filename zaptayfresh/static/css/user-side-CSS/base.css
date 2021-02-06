@@ -1,0 +1,584 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+*
+{
+  /* margin: 0px auto; */
+}
+
+body
+{
+  /* font-family: 'Merriweather', serif; */
+}
+
+.top_nav_menu
+{
+  width: 100%;
+  text-align: center;
+}
+
+.top_nav_menu span
+{
+  /* padding: 0px 23px; */
+  padding: 0px 13px;
+  font-weight: 700;
+}
+
+.top_nav_menu span a
+{
+  color: black;
+  text-decoration: none;
+}
+
+.nav_bar
+{
+  /* background-color: white;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; */
+
+  background-color: white;
+  height: 39px;
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
+  padding-top: 8px;
+}
+
+.location
+{
+  font-size: 18px;
+}
+
+.nav_bar span > a
+{
+  color: black;
+  text-decoration: none;
+}
+
+.searchbox
+{
+  width: 94%;
+  border: 1px solid black;
+  border-radius: 7px;
+  padding: 2px 5px;
+  border-right: none;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.searchbox:focus
+{
+  /* border: 1px solid black; */
+  outline: none;
+}
+
+.search_icon
+{
+  border: 1px solid black;
+  margin-left: -4px;
+  padding: 2px 5px;
+  color: blue;
+  border-radius: 4px;
+  border-left: none;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  background: #f9f8f8;
+}
+
+.search_result
+{
+  width: 92.5%;
+  margin-left: 6px;
+  position: relative;
+  display: none; /*  This will be off. Major thing  */
+}
+
+.search_items_space
+{
+  width: 100%;
+  background-color: white;
+  position: absolute;
+  z-index: 2;
+  background-color: #e6e6e6;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+  text-align: left;
+  padding: 5px;
+}
+
+.search_items
+{
+  width: 100%;
+  min-height: 30px;
+}
+
+.item_name
+{
+  padding: 0px 2px;
+  border-bottom: 2px solid black;
+  font-size: 14px;
+}
+
+.item_name:hover
+{
+  cursor: pointer;
+}
+
+.cart
+{
+  /* cursor: pointer; */
+}
+
+.cart:hover > .dropdown-menu
+{
+  display: block;
+}
+
+.cart > i
+{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart_number
+{
+  /* font-size: 17px;
+  margin-left: 5px; */
+  font-size: 17px;
+  margin-left: -4px;
+  background: red;
+  padding: 0px 5px;
+  border-radius: 19px;
+  color: white;
+  font-weight: 600
+}
+
+.dropdown-menu
+{
+  left: auto;
+  right: 0px;
+  top: 20px;
+}
+
+.cart-drop-down
+{
+
+}
+
+.cart_item_image
+{
+  width: 60px;
+  border-radius: 4px;
+}
+
+.dropdown-item
+{
+  border-bottom: 1px solid #6d6464;
+}
+
+/* Menu */
+.menu
+{
+  width: 100%;
+  height: 40px;
+  background: #3d0670;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+}
+
+.menu_item
+{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.menu .item_category
+{
+  /* border-right: 1px solid black; */
+  float: left;
+  padding: 0px 12px;
+  cursor: pointer;
+  /* margin: 0px auto; */
+}
+
+.menu .item_category a
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Modal */
+.my_modal_div
+{
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0a0a0a5e;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.modal_message
+{
+  display: none;
+}
+
+.my_modal
+{
+  width: 50%;
+  min-height: 250px;
+  background-color: white;
+  border-radius: 10px;
+  /* padding: 10px 20px; */
+  /* position: relative; */
+}
+
+.close
+{
+  opacity: 1;
+  /* position: absolute;
+  right: 0; */
+  margin-top: 4px;
+  margin-right: 4px;
+}
+
+.modal_heading
+{
+  width: 100%;
+  min-height: 58px;
+  /* background-color: red; */
+  padding: 14px 11px;
+  border-bottom: 2px solid black;
+}
+
+.modal_body
+{
+  width: 100%;
+  padding: 14px 11px;
+  text-align: justify;
+}
+/* /Modal */
+
+/* Login Modal */
+.my_login_modal_div
+{
+  display: none;
+}
+
+.my_login_modal_div > .my_modal
+{
+  width: 30%;
+  /* margin-top: -500px; */
+  animation: modal_form_show 1.2s;
+}
+
+@keyframes modal_form_show
+{
+  from
+  {
+    margin-top: -500px;
+  }
+  to
+  {
+    margin-top: 0px;
+  }
+}
+
+.my_login_modal_div .error_message
+{
+  color: red;
+  font-size: 14px;
+}
+
+.my_login_modal_div .input
+{
+  width: 100%;
+  margin: 8px 0px;
+  border-radius: 6px;
+  border: 1px solid #4e4b4b;
+  padding: 2px 6px;
+}
+
+.forget_pwd
+{
+  font-size: 12px;
+  float: right;
+  color: #040303;
+}
+
+.my_login_modal_div button
+{
+  margin: 10px 0px;
+  border-radius: 5px;
+  background-color: #ff242d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.my_login_modal_div .social_login
+{
+  width: 100%;
+  min-height: 50px;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #cac0c0;
+  padding-top: 10px;
+  display: flex;
+}
+
+.my_login_modal_div .social_login .social_icons
+{
+  width: auto;
+  height: auto;
+}
+
+.my_login_modal_div .social_login .social_icons span
+{
+  padding: 11px 15px;
+  background: red;
+  border-radius: 64px;
+  cursor: pointer;
+  color: white;
+}
+
+.my_login_modal_div .social_login .social_icons .fb
+{
+  background-color: #0a70cc;
+}
+
+.my_login_modal_div .social_login .social_icons .twee
+{
+  padding: 11px 12px;
+  background-color: #138fff;
+}
+
+.my_login_modal_div .social_login .social_icons .insta
+{
+  padding: 11px 13px;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+
+.my_login_modal_div .social_login .social_icons .goog
+{
+  padding: 11px 13px;
+  background-color: #D44638;
+}
+/* /Login Modal */
+
+/* Register Modal */
+.my_reg_modal_div
+{
+  display: none;
+}
+
+.my_reg_modal_div > .my_modal
+{
+  width: 30%;
+  animation: modal_form_show 1.2s;
+}
+
+.my_reg_modal_div .error_message
+{
+  color: red;
+  font-size: 14px;
+}
+
+.my_reg_modal_div .input
+{
+  width: 100%;
+  margin: 8px 0px;
+  border-radius: 6px;
+  border: 1px solid #4e4b4b;
+  padding: 2px 6px;
+}
+
+.my_reg_modal_div .name
+{
+  width: 48%;
+  float: left;
+  margin-right: 5px;
+}
+
+.forget_pwd
+{
+  font-size: 12px;
+  float: right;
+  color: #040303;
+}
+
+.my_reg_modal_div button
+{
+  margin: 10px 0px;
+  border-radius: 5px;
+  background-color: #ff242d;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+/* /Register Modal */
+
+
+/* Footer */
+footer
+{
+  width: 100%;
+  min-height: 250px;
+  background-color: #272727;
+  color: white;
+  /* padding: 50px 10px; */
+  padding: 50px 10px 10px 10px;
+  /* position: relative; */
+  float: left;
+}
+
+.footer_logo
+{
+  padding: 8px 0px;
+}
+
+.footer_logo span
+{
+  font-size: 40px;
+}
+
+.footer_address span
+{
+  font-size: 16px;
+}
+
+.social_links
+{
+  padding: 22px 0px;
+}
+
+.social_links .title
+{
+  font-style: italic;
+  padding-bottom: 10px;
+}
+
+.social_links .links a
+{
+  color: white;
+  text-decoration: none;
+  /* background: #464646;
+  padding: 11px 14px;
+  border-radius: 30px;
+  width: 50px;
+  height: 72px;
+  margin: 5px; */
+}
+
+.social_links .links a .logos
+{
+  background: #656363;
+  height: 42px;
+  width: 41px;
+  float: left;
+  /* padding: 8px; */
+  margin: 0px 3px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 35px
+}
+
+.social_links .links .facebook
+{
+
+}
+
+.policies, .customer, .b2b
+{
+  padding: 14px 0px;
+}
+
+.policies .title, .customer .title, .b2b .title, .newsletter .title, .subscribe .title, .payment_options .title
+{
+  color: #ffca01;
+}
+
+.policies .all_polices, .customer .all_polices, .b2b .all_polices
+{
+  padding: 14px 0px;
+}
+
+.policies .all_polices ul, .customer .all_polices ul, .b2b .all_polices ul
+{
+  list-style: none;
+  padding: 0px;
+}
+
+.newsletter, .subscribe, .payment_options
+{
+  padding: 45px 0px;
+}
+
+.newsletter .descp
+{
+  padding: 12px 0px;
+  font-size: 14px;
+}
+
+.subscribe .get_email
+{
+  padding: 12px 0px;
+}
+
+.subscribe .get_email input
+{
+  width: 87%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.subscribe .get_email input:focus
+{
+  outline: 0px;
+  box-shadow: none;
+}
+
+.subscribe .get_email .input-group-addon
+{
+  padding: 7px 13px;
+  background-color: white;
+  color: black;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  cursor: pointer;
+}
+
+.subscribe .get_email .input-group-addon i
+{
+  transform: rotate(45deg);
+}
+
+footer .copy_write
+{
+  width: 100%;
+  text-align: center;
+  border-top: 2px solid #565454;
+  padding: 10px 0px;
+}
+
+footer .copy_write span
+{
+  font-size: 13px;
+}
+
+.payment_options
+{
+
+}
+/* /Footer */

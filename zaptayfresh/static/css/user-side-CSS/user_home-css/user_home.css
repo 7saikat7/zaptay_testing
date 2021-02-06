@@ -1,0 +1,748 @@
+.banner
+{
+  width: 100%;
+  height: 300px;
+  margin-bottom: 5px;
+  /* height: 450px; */
+  background-color: #ebecec;
+  /* overflow: hidden; */
+  float: left;
+}
+
+.banner_category_div
+{
+  width: 14%;
+  height: 252px;
+  float: left;
+  padding-right: 10px;
+}
+
+.banner_category
+{
+  width: 100%;
+  background-color: #e4e2e2;
+  box-shadow: 0px 4px 10px black;
+}
+
+.banner_category > ul
+{
+  list-style: none;
+  padding: 0px;
+}
+
+.banner_category > ul > a
+{
+  color: black;
+  text-decoration: none;
+}
+
+.banner_category > ul > a:hover
+{
+  color: #f34c4f;
+  font-weight: 600;
+}
+
+.banner_category > ul > a > li
+{
+  padding: 12px 2px;
+  border-bottom: 2px solid black;
+  /* transition: border 1s ease; */
+  position: relative;
+  text-align: center;
+}
+
+.banner_category > ul > a > li::after
+{
+  content: "";
+  width: 0%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid #f34c4f;
+  transition: width 1s ease;
+}
+
+/* .banner_category > ul > a > li:hover
+{
+  border-bottom: 2px solid #f34c4f;
+} */
+
+.banner_category > ul > a > li:hover::after
+{
+  width: 100%;
+  border-bottom: 2px solid #f34c4f;
+  transition: width 1s ease;
+}
+
+.banner_category .active
+{
+  border-bottom: 2px solid #f34c4f;
+  color: #f34c4f;
+  font-weight: 600;
+}
+
+/* Banner section */
+.banner_image_div
+{
+    width: 72%;
+    float: left;
+}
+
+.banner_image
+{
+  width: 100%;
+  height: 300px;
+  background-color: #984d4d;
+}
+
+.banner_image > img
+{
+  width: 100%;
+  height: 100%;
+}
+
+#womens_fashion_image,
+#baby_kid_fashion_image,
+#mobile_image,
+#electronic_image,
+#office_appliance_image
+{
+  display: none;
+}
+
+
+/* Right side INDIAN HAAT */
+.banner_indian_haat_div
+{
+  width: 13%;
+  height: 300px;
+  float: right;
+}
+
+.indian_haat
+{
+  width: 100%;
+  height: 100%;
+  background: gray;
+  float: left;
+}
+
+.indian_haat > img
+{
+  width: 100%;
+  height: 100%;
+  box-shadow: -2px 5px 7px black;
+}
+
+/* OUR FACILITY */
+.our_facility
+{
+  width: 100%;
+  height: auto;
+  /* background-color: #c2c5c5; */
+  border-top: 2px solid #777272;
+  border-bottom: 2px solid #777272;
+  /* margin-top: 20px; */
+  padding: 7px 0px;
+  float: left;
+}
+
+.our_facility a
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+.facility_tab
+{
+  width: 100%;
+  height: 62px;
+  border: 2px solid #c5bfbf;
+  border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  transition: all 1s;
+}
+
+.facility_tab:hover
+{
+  box-shadow: 0px 0px 6px 1px #131212;
+  transform: scale(1.05);
+  transition: all 0.8s;
+}
+
+.logo
+{
+  float: left;
+  margin: 0px 10px;
+  width: 30%;
+}
+
+/* .logo > i
+{
+  font-size: 20px;
+} */
+
+.logo img
+{
+  /* width: 62%; */
+  width: 100%;
+}
+
+.text
+{
+  float: left;
+  text-align: left;
+  margin: 2px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.text span
+{
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Shop by exclusive categories */
+.exclusive
+{
+  width: 100%;
+  min-height: 50px;
+  background-color: #eae9e9;
+  padding-top: 10px;
+  float: left;
+}
+
+.exclusive .title
+{
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.exclusive .exclusive_categorys
+{
+  width: 100%;
+  min-height: 50px;
+  border: 2px solid #c3bfbf;
+  border-left: none;
+  border-right: none;
+  padding: 5px 15px;
+float: left;
+}
+
+.exclusive .exclusive_categorys .optimize_padding
+{
+  padding: 0px 4px;
+}
+
+.exclusive .exclusive_categorys .image
+{
+  width: 100%;
+}
+
+.exclusive .exclusive_categorys .image img
+{
+  width: 100%;
+  height: 140px;
+}
+
+.exclusive .exclusive_categorys .category_name
+{
+  width: 100%;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+/* /Shop by exclusive categories */
+
+/* Weekly Deals & offer */
+.weekly_deal
+{
+  width: 100%;
+  min-height: 250px;
+  background-color: #eae9e9;
+  padding: 20px 0px;
+  float: left;
+}
+
+.w_d_o_span
+{
+  padding-right: 10px;
+  font-size: 22px;
+  padding-bottom: 10px;
+}
+
+.w_d_o_time
+{
+  font-size: 22px;
+  color: red;
+}
+
+.weekly_deal .gap
+{
+  padding: 10px 0px 5px 0px;
+}
+
+.weekly_deal .small_banner
+{
+  width: 100%;
+  height: 350px;
+  background-color: red;
+}
+
+.small_banner img
+{
+  width: 100%;
+  height: 350px;
+}
+
+.w_d_offer_slider
+{
+  width: 100%;
+  min-height: 350px;
+  padding: 20px 0px;
+  /* background-color: red; */
+}
+
+.offer_div
+{
+  width: 100%;
+  height: 350px;
+  /* background-color: red; */
+  position: relative;
+}
+
+.offer_div img
+{
+  width: 100%;
+  height: 250px;
+}
+
+.offer_div .product_details
+{
+  padding: 0px 5px;
+}
+
+.offer_div .focus_discount
+{
+  // background: #f1f70a;
+  background-color: red;
+  top: -14px;
+  right: -10px;
+  position: absolute;
+  border-radius: 84px;
+  padding: 3px 11px;
+  box-shadow: 0px 0px 12px 0px #bf0707;
+  /* border: 1px solid black; */
+  animation: offer_blink 3s infinite;
+}
+
+@keyframes offer_blink
+{
+  0%
+  {
+    box-shadow: 0px 0px 0px 0px #bf0707;
+  }
+  50%
+  {
+    box-shadow: 0px 0px 12px 2px #bf0707;
+  }
+  100%
+  {
+    box-shadow: 0px 0px 0px 0px #bf0707;
+  }
+}
+
+.offer_div .focus_discount .focus_discount_text
+{
+  width: 25px;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.w_d_offer_slider .product_name
+{
+  font-size: 15px;
+}
+
+.offer_div .product_details .rating .point
+{
+  padding: 2px 10px;
+  background-color: #d0c9c9;
+}
+
+.product_details .price
+{
+  font-size: 13px;
+}
+
+.product_details .price .offer
+{
+  /* padding: 0px 5px 0px 0px; */
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.product_details .price .original
+{
+  text-decoration: line-through;
+  /* padding-right: 10px; */
+  font-size: 18px;
+}
+
+.product_details .price .discount
+{
+  font-size: 14px;
+}
+
+.product_details .view
+{
+  padding: 0px 0px 0px 5px;
+  font-size: 14px;
+  text-align: right;
+}
+
+.item
+{
+  padding: 15px;
+}
+/* /Weekly Deals & offer */
+
+/* Featured Category */
+.featured_category
+{
+  width: 100%;
+  min-height: 350px;
+  /* background-color: red; */
+  padding: 20px 0px;
+  float: left;
+}
+
+.fashion
+{
+  width: 100%;
+  min-height: 320px;
+  /* background-color: cyan; */
+  /* border: 2px solid #928e8e;
+  box-shadow: 5px 5px 5px #bdbbbb; */
+  padding: 0px 5px;
+}
+
+.fashion .header
+{
+  width: 100%;
+  text-align: center;
+  background-color: #c79e09;
+  padding: 5px 0px;
+}
+
+.fashion .body
+{
+  height: 370px;
+  padding: 0px 17px;
+  background-color: #b1b1ab;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.fashion .body::-webkit-scrollbar
+{
+    width: 0px;
+    background: transparent; /* Chrome/Safari/Webkit */
+}
+
+.fashion .body img
+{
+  width: 100%;
+  height: 200px;
+  margin: 2px;
+  /* border: 2px solid #3a3737; */
+  position: relative;
+  transition: 2s;
+  cursor: pointer;
+}
+
+.fashion .body img:hover
+{
+  /* transform: scale(1.05); */
+  /* box-shadow: 0px 0px 12px red; */
+  /* z-index: 2; */
+  /* position: absolute; */
+  transition: 1s;
+}
+
+.feature_cat_pading_man
+{
+  padding: 0px 1px;
+  position: relative;
+}
+
+.product_category
+{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  z-index: 3;
+  background: #403f3fdb;
+  color: white;
+  font-weight: 600;
+  opacity: 0;
+  padding: 6px 0px;
+  transition: 2s;
+}
+
+.feature_cat_pading_man:hover .product_category
+{
+  opacity: 1;
+  transition: 1s;
+}
+
+/* Featured Category slider customize */
+.slick-prev,
+.slick-next
+{
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.slick-prev:focus,
+.slick-next:focus
+{
+  outline: none;
+}
+/* /Featured Category slider customize */
+
+/* /Featured Category */
+
+/* Robotic & Electronics */
+.robot_elect
+{
+  width: 100%;
+  min-height: 350px;
+  //background-color: red;
+  padding: 10px 0px;
+  /* border: 1px solid black; */
+  float: left;
+}
+
+.robot_elect .title
+{
+  font-size: 30px;
+  padding-right: 5px;
+}
+
+.robot_elect a
+{
+  color: #2f96af;
+  text-decoration: none;
+}
+
+.robot_elect .product_div
+{
+  width: 85%;
+  min-height: 300px;
+  /* background-color: #f5f4f4; */
+  /* padding: 5px 8px; */
+  padding: 5px 0px;
+  cursor: pointer;
+  transition: 3s;
+}
+
+.robot_elect .product_div:hover, .robot_elect .product_div .product_img img
+{
+  transform: scale(1.03);
+  /* box-shadow: 0px 0px 20px 0px #544c4c; */
+  transition: 1s;
+}
+
+.robot_elect .product_div .product_img
+{
+  width: 100%;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.robot_elect .product_div .product_img img
+{
+  width: 100%;
+  height: 210px;
+  border: 1px solid black;
+}
+.robot_elect .product_div .product_img span
+{
+  position: absolute;
+  // z-index: 3;
+  left: -5px;
+  top: -12px;
+  background-color: #4aa14f;
+  padding: 1px 7px;
+  color: white;
+}
+
+.robot_elect .product_div .product_name
+{
+  width: 100%;
+  padding: 0px 6px;
+}
+
+.robot_elect .product_div .price
+{
+  padding: 0px 6px;
+}
+
+.robot_elect .product_div .price .orignal_price
+{
+  text-decoration: line-through;
+  margin-left: 12px;
+}
+
+.robot_elect .product_div .offer
+{
+  width: 100%;
+  height: auto;
+  padding: 10px 0px;
+}
+
+.robot_elect .product_div .offer
+{
+  padding: 5px 6px;
+}
+
+.robot_elect .product_div .offer .off
+{
+  border: 1px solid #0fa049;
+  color: #0fa049;
+  padding: 3px 8px;
+  font-weight: 700;
+}
+/* /Robotic & Electronics */
+
+/* Product Banner */
+.product_banner
+{
+  width: 100%;
+  min-height: 218px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  float: left;
+}
+
+.product_banner .banner_div
+{
+  width: 100%;
+  box-shadow: 2px 3px 8px #272626;
+}
+
+.product_banner .banner_div img
+{
+  width: 100%;
+}
+/* /Product Banner */
+
+/* Men Jackets */
+
+/* /Men Jackets */
+
+/* Product Banner 2 */
+.product_banner2
+{
+  width: 100%;
+  min-height: 350px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding: 15px 0px;
+  float: left;
+}
+
+.product_banner2 .banner_div
+{
+  width: 100%;
+}
+
+.product_banner2 .banner_div img
+{
+  width: 102%;
+  height: 300px;
+  border: 2px solid #0095ff;
+}
+/* /Product Banner 2 */
+
+/* Men Jackets2 */
+
+/* /Men Jackets2 */
+
+/* Pet Product */
+.pet_product
+{
+  width: 100%;
+  min-height: 250px;
+  padding: 7px 0px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  float: left;
+}
+
+.pet_product img
+{
+  width: 100%;
+}
+/* /Pet Product */
+
+/* Mobile & Tablets */
+
+/* /Mobile & Tablets */
+
+/* Baby Product Banner */
+
+/* /Baby Product Banner */
+
+/* addCart and widh list */
+.add_cart_div
+{
+  height: auto;
+  border: 2px solid black;
+}
+
+.add_cart_div .cart_wish_list
+{
+  width: 100%;
+  height: 40px;
+  padding: 5px 0px;
+}
+
+.add_cart_div .cart_wish_list .wishlist
+{
+  width: 45%;
+  height: 27px;
+  background: #ffef0f;
+  align-items: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: 0px 5px;
+  border-radius: 6px;
+  color: red;
+  cursor: pointer;
+  float: left;
+}
+
+.add_cart_div .cart_wish_list .cart
+{
+  color: black;
+}
+/* /addCart and widh list */

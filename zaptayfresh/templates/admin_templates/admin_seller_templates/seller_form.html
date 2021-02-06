@@ -1,0 +1,262 @@
+
+
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Add Seller{% endblock  %}
+
+{% block custom_css %}
+
+  <!-- Custom fonts for this template-->
+  <link href="/static/css/admin-side-CSS/admin-seller-css/fontawsome-free-css/all.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="/static/css/admin-side-CSS/admin-seller-css/sb-admin-2.css" rel="stylesheet">
+
+  
+  <style media="screen">
+    .error_msg
+    {
+      color: red;
+    }
+    .error_msg>ul
+    {
+      margin-bottom: 0px;
+    }
+    </style>
+{% endblock  %}
+ 
+ 
+
+{% block page_body %}
+ 
+
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Seller Details</h1>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <!-- Basic Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        {% if seller_data %}
+          <h6 class="m-0 font-weight-bold text-primary">{{ seller_data.seller_id }} (Edit mode)</h6>
+        {% else %}
+          <h6 class="m-0 font-weight-bold text-primary">Seller Add</h6>
+        {% endif %}
+      </div>
+      <div class="card-body">
+        <form method="POST" enctype="multipart/form-data">
+          {% if form.errors %}
+            {% for i in form %}
+              <span class="error_msg">{{ i.errors }}</span>
+            {% endfor %}
+            <br />
+          {% endif %}
+          <div class="form-group">
+            <label for="seller_title" class="mentetory">Seller Company Name</label>
+            <!-- <input type="text" class="form-control" id="seller_title" placeholder="Seller Title"> -->
+            {{ form.seller_Company_Name }}
+          </div>
+          <div class="form-group">
+            <label for="seller_name" class="mentetory">Seller Name</label>
+            <!-- <input type="text" class="form-control" id="seller_name" placeholder="Seller Name"> -->
+            {{ form.seller_name }}
+          </div>
+          <div class="form-group">
+            <label for="seller_name" class="mentetory">Seller Password</label>
+            <!-- <input type="text" class="form-control" id="seller_name" placeholder="Seller Name"> -->
+            {{ form.seller_Password }}
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="seller_email_id" class="mentetory">Seller Email Id</label>
+              <!-- <input type="email" class="form-control" id="seller_email_id" placeholder="Email Id"> -->
+              {{ form.seller_email }}
+            </div>
+            <div class="form-group col-md-3">
+              <label for="seller_ph_no" class="mentetory">Seller Phone no</label>
+              <!-- <input type="text" class="form-control" id="seller_ph_no" placeholder="Phone No"> -->
+              {{ form.seller_phone_no }}
+            </div>
+            <div class="form-group col-md-5">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="seller_img" class="mentetory">Seller Image</label>
+                  <div class="custom-file">
+                    <!-- <input type="file" class="custom-file-input" id="seller_img"> -->
+                    {{ form.seller_img }}
+                    <label class="custom-file-label" for="seller_img" data-browse="Browse">Upload Seller Image</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="seller_address">Seller Address</label>
+              <!-- <textarea class="form-control" id="seller_address" rows="5" ></textarea> -->
+              {{ form.seller_address }}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="seller_address">Seller Bank Details</label>
+              <!-- <textarea class="form-control" id="seller_address" rows="5" ></textarea> -->
+              {{ form.Seller_BankDetails }}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="seller_specufication">Seller Specification</label>
+              <!-- <input type="text" class="form-control" id="seller_specufication" placeholder="Seller specification"> -->
+              {{ form.seller_specification }}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="gst_no" class="mentetory">GST No.</label>
+              <!-- <input type="text" class="form-control" id="gst_no" placeholder="GST NO."> -->
+              {{ form.seller_gst_no }}
+            </div>
+            <div class="form-group col-md-5">
+              <label for="gst_img" class="mentetory">GST No Image</label>
+              <div class="custom-file">
+                <!-- <input type="file" class="custom-file-input" id="gst_img"> -->
+                {{ form.gst_img }}
+                <label class="custom-file-label" for="gst_img" data-browse="Browse">Upload GST Image</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="aadhaar" class="mentetory">Aadhaar No</label>
+              <!-- <input type="text" class="form-control" id="aadhaar" placeholder="Aadhaar No."> -->
+              {{ form.seller_aadhaar_no }}
+            </div>
+            <div class="form-group col-md-5">
+              <label for="aadhaar_img" class="mentetory">Aadhaar Card Image</label>
+              <div class="custom-file">
+                <!-- <input type="file" class="custom-file-input" id="aadhaar_img"> -->
+                {{ form.aadhaar_img }}
+                <label class="custom-file-label" for="aadhaar_img" data-browse="Browse">Upload Aadhaar Image</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="voter_no" class="mentetory">Voter Card No</label>
+              <!-- <input type="text" class="form-control" id="voter_no" placeholder="Voter No."> -->
+              {{ form.seller_voter_no }}
+            </div>
+            <div class="form-group col-md-5">
+              <label for="voter_img" class="mentetory">Voter Card Image</label>
+              <div class="custom-file">
+                <!-- <input type="file" class="custom-file-input" id="voter_img" multiple="multiple"> -->
+                {{ form.voter_img }}
+                <label class="custom-file-label" for="voter_img" data-browse="Browse">Upload Voter Image</label>
+              </div>
+            </div>
+          </div>
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success btn-lg" style="width: 180px">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+     
+ 
+                <!-- end Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+ 
+{% endblock %}
+ 
+
+
+
+
+
+
+{% block custom_js %}
+
+  
+      <!-- Bootstrap core JavaScript-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/bootstrapJS/jquery.min.js"></script>
+      <script src="/static/Js/admin-side-JS/admin-seller-js/bootstrapJS/bootstrap.bundle.min.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/PluginJS/jquery.easing.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/sb-admin-2.js"></script>
+
+      <!-- fontawsome -->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/fontawsomeJS/all.js"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+      
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

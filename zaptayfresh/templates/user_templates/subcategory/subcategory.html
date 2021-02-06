@@ -1,0 +1,958 @@
+{% extends "user_templates/base_user.html" %}
+{% load mathfilters %}
+{% load static %}
+
+{% block title %}{{CurrentSubCat.sub_category_name}}{% endblock %}
+
+{% block add_css %}
+
+ 
+<link rel="stylesheet" href="/static/css/user-side-CSS/subcategory-css/subcategory.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+
+  <link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/home.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/card.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/all.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/features_category.css">
+<style>
+  .carousel-caption {
+   
+    position:absolute ;
+    top: -20px;
+     
+}
+
+
+
+
+.product_view_rating > .product_rating{
+  /* width: 50%; */
+  float: center;
+}
+
+ .product_view_rating > .product_rating .rating_text{
+  background-color: #0064ff;
+  padding: 1px 4px;
+  font-weight: 800;
+  color: white;
+}
+
+.product_view_rating > .product_rating .rating_text i{
+  font-size: 10px;
+}
+
+ .product_view_rating > .product_rating{
+  /* width: 50%; */
+  float: center;
+}
+
+ .product_view_rating > .product_rating .rating_text{
+  background-color: #0064ff;
+  padding: 1px 4px;
+  font-weight: 800;
+  color: white;
+}
+ .product_view_rating > .product_rating .rating_text i{
+  font-size: 10px;
+}
+
+
+
+  .scrol::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.scrol::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.scrol::-webkit-scrollbar-thumb {
+  background-color: #0064ff;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  border: 3px solid transparent;  /* creates padding around scroll thumb */
+}
+
+
+
+
+.carousel-indicators {
+  top: -20px;
+  left: -30px;
+  /* bottom: 100px; */
+  right: auto;
+  margin-bottom: 1000px;
+  color: #0064ff;
+  background-color:#0064ff ;
+}
+
+.carousel-indicators li {
+   
+  width: 10px;
+  height: 10px;
+  color: #0064ff;
+  background-color:#0064ff ;
+  border-radius: 100%;
+}
+
+.carousel-indicators li:not(:last-child) {
+  margin-right: 2px;
+  color: #0064ff;
+  background-color:#0064ff ;
+}
+
+
+
+/* price range Bar */
+ #formControlRange {
+  background: linear-gradient(to right, #d3ce90 0%, #c6fcbb 51%, #c6fcbb 50%, red 100%);
+  border: ;
+  border-radius: 8px;
+  height: 7px;
+  width: 100%;
+  
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+}
+
+
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: #0064ff; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 10px;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+/* price range  End */
+.card-hlight:hover{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.shadow{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+
+<div class="row">
+  <div class="col-2  " style="padding-x:1%; margin:0%;"><img class="float-right " src="https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111.jpg" height="300px" width="188px" alt=""></div>
+
+  <div class="col-8  " style="padding-x:1%; margin:0%;">
+
+    <div id="carouselExampleControls" class="carousel slide  " data-ride="carousel">
+  <div class="carousel-inner">
+               {%for img in banu%}
+                    {%if forloop.counter == 1%}
+                    <a href="{{img.banner_link}}">
+                    <div class="carousel-item active" style="height: 300px;">
+                      <div class="carousel-caption d-none d-md-block text-center align-items-center">
+                    <div class="mx-5 rounded"><div class="mx-5 px-5 rounded"><div class="mx-5 mt-2 rounded" style=" opacity: 0.7;"><h3 class="text-center text-light text-dark rounded py-1" style="background-color: aliceblue; border-radius: 20px;  opacity: 1 !important;">{{CurrentSubCat.sub_category_name}}</h3></div></div> </div> 
+                     
+                    </div>
+                      <img src="/media/{{img.banner_image}}" class="d-block w-100" height="300px" alt="..."> 
+                    </div>
+                    </a>
+                    {%else%}
+                     <a href="{{img.banner_link}}">
+                    <div class="carousel-item" style="height: 300px;">
+                      <div class="carousel-caption d-none d-md-block">
+                        <div class="mx-5 rounded"><div class="mx-5 px-5 rounded"><div class="mx-5  mt-2 rounded" style=" opacity: 0.7;"><h3 class="text-center text-light text-dark rounded py-1" style="background-color: aliceblue; border-radius: 20px;  opacity: 1 !important;">{{CurrentSubCat.sub_category_name}}</h3></div></div> </div> 
+                      </div>
+                        <img src="/media/{{img.banner_image}}" class="d-block w-100" height="300px" alt="..."> 
+                    </div>
+                    </a>
+                    {%endif%}
+                  {%endfor%}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+  </div>
+
+  <div class="col-2  " style="padding-x:1%; margin:0%;"> <a href="/Indianhatt"><img src="https://iso.500px.com/wp-content/uploads/2016/03/stock-photo-142984111.jpg" height="300px" width="188px" alt=""></a> </div>
+</div>
+
+
+
+
+
+
+ 
+ 
+
+
+  <!-- ===================================================== Tertioary Category ===================================================== -->
+  <div class="sub_category shadow">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="left_arrow exclusive_left_arrow tertiory_category_scroll_left"><i class="fas fa-caret-left"></i></div>
+          <div class="right_arrow exclusive_right_arrow tertiory_category_scroll_right"><i class="fas fa-caret-right"></i></div>
+          <div class="product_section" id="sub_category_product_section">
+            <ul>
+
+              {% if Tercate %}
+                {% for t in Tercate %}
+                  <li class="card-hlight">
+                    <span>
+                      <a href="javascript:void(0);" onclick=" getundTer('{{t.ter_category_id}}')">
+                        <div class="category_blog_design"> 
+                          <div class="category_image">
+                            {%if t.tertiary_category_image  %}
+                              <img src="{{ t.tertiary_category_image.url }}" alt="">
+                           {%endif%}
+                         
+                         
+                          </div>
+                          <div class="category_title">{{ t.ter_category_name }}</div>
+                        </div>
+                      </a>
+                    </span>
+                  </li>
+                {% endfor %}
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================== Tertioary Category end ===================================================== -->
+
+   
+  
+  <!-- =================================================== under tertiary Category =================================================== -->
+                <div id="undter"  class="  "></div>
+    <!-- =================================================== under tertiary Category End =================================================== -->
+
+
+
+  <!-- ===================================  Breadcrumbs start  ================================================================ -->
+  <div class="breadcrumbs_div ">
+    <div class="container-fluid ">
+      <div class="row ">
+        <div class="col-md-12 shadow">
+          <div class="breadcrumbs">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="breadcrumbs_title mt-2" style="background-color: #0064ff; width:287px; height: 30px;">
+                  <div class="sub_category_title">
+                    <span class="text-light">{{CurrentSubCat.sub_category_name|capfirst }}  </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="breadcrumbs_childs">
+                  <ul>
+                    <li>
+                      <a href="{% url 'home:homepage' %}"><i class="fas fa-home text-primary"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="text-primary">{{CurrentSubCat.sub_category_name}} </span></a>
+                    </li>
+                  </ul>
+                  <!-- <div class="total_product_showing">Showing 1-40 products of 150 Products
+                </div> -->
+                      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- ===================================  Breadcrumbs end  ================================================================== -->
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- ===================================  product showing   ================================================================== -->
+  
+ <div class="breadcrumbs_div">
+  <div class="container-fluid">
+  <div class="row my-1">
+
+
+  <!-- ===================================================== Filter ===================================================== -->
+  <div class="col-3"> 
+
+    <!-- Brand NAmes --------------------->
+    <div class="card mt-2 shadow" style="width: 18rem;">
+      <div class="card-body">
+        <!--section Title ----------------->
+        <div  >
+         <h6> <span class="text-primary">⬤</span> Brands</h6>
+     <!--      <hr style="color: #0064ff; background-color: #0064ff;"> -->
+        </div>
+        <!--section Title -->
+       
+        <!-- Search bar --------------------->
+        <div class="input-group md-form form-sm form-2 pl-0 my-3">
+          <input class="form-control my-0 py-1 red-border" type="text" style="height: 30px;" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <span class="input-group-text red lighten-3 bg-primary" id="basic-text1"><i class="fas fa-search text-light "
+                aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <!-- Search bar end -->
+
+     
+        <p class="card-text">
+          <div class="row">
+            {%for b in brand %}
+            <div class="col-4 mt-1" >  <img src="{{b.BrandImage.url}}" height="50px" width="70px" alt="" onclick="getProdByBrand('{{CurrentSubCat.sub_category_id}}','{{b.brand_id}}')">  </div>
+            {%endfor%}
+          </div>
+        </p>
+        <span class="float-right text-primary">See More</span>
+      </div>
+    </div>
+    <!-- Brand Names end -->
+
+    <!-- Colors  ------------------>
+    <div class="card mt-2 shadow" style="width: 18rem;">
+      <div class="card-body">
+         <!--section Title -->
+        <div  >
+         <h6> <span class="text-primary">⬤</span> Colors</h6>
+        <!--   <hr style="color: #0064ff; background-color: #0064ff;"> -->
+        </div>
+        <!--section Title -->
+       
+        <!-- Search bar -->
+        <div class="input-group md-form form-sm form-2 pl-0 my-3">
+          <input class="form-control my-0 py-1 red-border" type="text" style="height: 30px;" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <span class="input-group-text red lighten-3 bg-primary" id="basic-text1"><i class="fas fa-search text-light "
+                aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <!-- Search bar end -->
+
+
+        
+        <p class="card-text">
+          <div class="row">
+            {%for c in col%}
+            <div class="col-4 mt-1"> <img src="{{c.ColorImage.url}}" height="40px" width="40px" alt="" onclick="getProdBycolor('{{CurrentSubCat.sub_category_id}}','{{c.color_id}}')"></div>
+            {%endfor%}
+          </div>
+
+        </p>
+        <span class="float-right text-primary">See More</span>
+      </div>
+    </div>
+    <!-- Colors end -->
+
+    <!-- Size  ---------------------------->
+    <div class="card mt-2 shadow" style="width: 18rem;">
+      <div class="card-body">
+         <!--section Title -->
+        <div  >
+         <h6> <span class="text-primary">⬤</span> Size</h6>
+        <!--   <hr style="color: #0064ff; background-color: #0064ff;"> -->
+        </div>
+        <!--section Title -->
+       
+        <!-- Search bar -->
+        <div class="input-group md-form form-sm form-2 pl-0 my-3">
+          <input class="form-control my-0 py-1 red-border" type="text" style="height: 30px;" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <span class="input-group-text red lighten-3 bg-primary" id="basic-text1"><i class="fas fa-search text-light "
+                aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <!-- Search bar end -->
+
+
+        <p class="card-text">
+          
+            
+          
+          <div class="row">
+             {% for s in siz%}
+            <div class="col-4"><button class="btn btn-outline-primary w-100 mt-1" onclick="getProdBySize('{{CurrentSubCat.sub_category_id}}','{{s.size_name|upper}}')">{{s.size_name|upper}}</button></div>
+           {%endfor%}
+           </div>
+        </p>
+         <span class="float-right text-primary">See More</span>
+      </div>
+    </div>
+    <!-- Size end  -->
+
+    <!-- price range  ----------------------------->
+    <div class="card mt-2 shadow" style="width: 18rem;">
+      <div class="card-body">
+         <!--section Title -->
+        <div class="mb-5" >
+         <h6> <span class="text-primary  " >⬤</span> Price Range</h6>
+        <!--   <hr style="color: #0064ff; background-color: #0064ff; height: 1px;"> -->
+        </div>
+        <!--section Title -->
+       
+        
+
+
+        <div>
+          <form>
+            <div class="form-group">
+              
+              <input type="range" min="100" max="10000" class="form-control-range slider" id="formControlRange">
+              <label for="formControlRange" class="mt-1"> <span class="text-success float-left font-weight-bold">₹100</span>&nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <span class="  float-right font-weight-bold" style="color: rgb(211, 122, 5);"> ₹10,000</span></label>
+            </div>
+          </form>
+         <div class="text-center text-primary mb-3"> <span id="myValue"></span></div>  
+          
+        </div>
+
+        <div class="row">
+          <div class="col-6"><button class="btn btn-primary w-100 mr-2  "   onclick=" getpricerangeprod('{{CurrentSubCat.sub_category_id}}')"> Apply</button> </div>
+          <div class="col-6"><button class="btn btn-primary w-100">Clear</button></div>
+        </div>
+        
+      </div>
+    </div>
+    <!-- price range end -->
+
+</div>
+  <!-- ===================================================== Filter end ===================================================== -->
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- ===================================================== product ===================================================== -->
+  <div class="col-9 " style="overflow-y:scroll; height: 1145px;"  >
+    <!-- row -->
+    <div class="row" id="pro" >
+      
+   
+        </div>
+        <div class="text-center" id="butn"></div>
+    <!-- row end-->
+
+    
+  </div>
+  <!-- ===================================================== Product end ===================================================== -->
+
+
+
+
+  </div>
+  </div>
+</div>  
+ </div>
+  <!-- ===================================================== product end ===================================================== -->
+
+
+
+  <!-- ===================================  product showing  end  ================================================================== -->
+
+
+
+
+
+
+ 
+<!-- ====================== Relates Product ======================================== -->
+<div class="exclusive_category_div mt-5 pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center  ">
+        <h1 class="font-weight-light" style="font-size: 25px;  ">Related Product</h1>
+        
+      </div>
+       <div class="col-md-12 text-right mb-1 ">
+        <span class="font-weight-light" style="font-size: 18px;"> <a href="" class="text-primary">View all</a> </span> 
+      </div>
+      <div class="col-md-12">
+        <div onclick="left('product_section1')" class="left_arrow weekly_dreals_left_arrow"><i class="fas fa-chevron-left h2 text-primary font-weight-light"></i></div>
+        <div onclick="right('product_section1'),relatedprod('{{CurrentSubCat.sub_category_id}}','12')" class="right_arrow weekly_dreals_right_arrow"><i class="fas fa-chevron-right h2 text-primary font-weight-light"></i></div>
+        <div class="product_section" id="product_section1">
+          <ul style="background-color: transparent;" id="RP">
+
+           
+
+         
+  {%for p in RP%}
+ 
+
+              <li class="ml-5 text-center card-hlight " onclick="addProductViews('{{p.prod_custom_id}}')">
+              <span>
+                <div class="product_best_seller"><span>Best Seller</span></div>
+                <div class="product_wish_list_icon"><i class="fas fa-heart"></i></div>
+
+                <a href="{% url 'home:singleproduct' p.prod_custom_id %}">
+
+                  <div class="product_design_div pl-1 pt-1">
+
+                    <div class="product_image" style="width: 200px; height: 300px; ">
+                      <img src="{{p.product_image1.url}}" alt="">
+                    </div>
+
+                    <div class="product_description text-center">
+
+                      <div class="font-weigght-light h5 mt-2"> {{p.prod_title}}</div>
+
+                       <div class="product_view_rating">
+                        <div class="product_rating">
+                          <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;({{p.Cutomer_Views}})
+                        </div>
+                       <!--  <div class="viewer">
+                          <span>&nbsp;&nbsp;(15,000)</span>
+                        </div> -->
+                      </div>
+                      <div class="product_pricing mt-1">
+                       
+                          <span class="font-weight-bold">&#x20B9; {{p.off_price}}</span>
+                          <span class="original_price" style="text-decoration: line-through;">&#8377; {{p.m_price}}</span> <span class="" style="color:green;"> {% with frst=100|div:p.m_price scnd=p.m_price|sub:p.off_price %} {{ frst|mul:scnd|floatformat:0 }}% {% endwith %}</span>
+                          
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </span>
+            </li>
+         
+        {%endfor%}
+             
+         
+ 
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="exclusive_category_div">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 text-center mb-3 ">
+        <h1 class="font-weight-light" style="font-size: 25px;  ">Customer on Demand Product</h1>
+      
+      </div>
+        
+      <div class="col-md-12">
+        <div onclick="left('product_section2')" class="left_arrow weekly_dreals_left_arrow"><i class="fas fa-chevron-left h2 text-primary font-weight-light"></i></div>
+        <div onclick="right('product_section2'),PODSingleProdpage('12')" class="right_arrow weekly_dreals_right_arrow"><i class="fas fa-chevron-right h2 text-primary font-weight-light"></i></div>
+        <div class="product_section" id="product_section2">
+          <ul style="background-color: transparent;" id="CODP">
+
+         {%for p in producti%}
+
+              <li class="ml-5 text-center card-hlight" onclick="addProductViews('{{p.prod_custom_id}}')">
+              <span>
+                <div class="product_best_seller"><span>Best Seller</span></div>
+                <div class="product_wish_list_icon"><i class="fas fa-heart"></i></div>
+
+                <a href="{% url 'home:singleproduct' p.prod_custom_id %}">
+
+                  <div class="product_design_div pl-1 pt-1">
+
+                    <div class="product_image" style="width: 200px; height: 300px; ">
+                      <img src="{{p.product_image1.url}}" alt="">
+                    </div>
+
+                    <div class="product_description text-center">
+
+                      <div class="font-weigght-light h5 mt-2"> {{p.prod_title}}</div>
+
+                       <div class="product_view_rating">
+                        <div class="product_rating">
+                          <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;({{p.Cutomer_Views}})
+                        </div>
+                       <!--  <div class="viewer">
+                          <span>&nbsp;&nbsp;(15,000)</span>
+                        </div> -->
+                      </div>
+                      <div class="product_pricing mt-1">
+                       
+                          <span class="font-weight-bold">&#x20B9;  {{p.off_price}}</span>
+                          <span class="original_price" style="text-decoration: line-through;">&#8377; {{p.m_price}}</span> <span class="" style="color:green;"> {% with frst=100|div:p.m_price scnd=p.m_price|sub:p.off_price %} {{ frst|mul:scnd|floatformat:0 }}% {% endwith %} </span>
+                          
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </span>
+            </li>
+        {%endfor%}
+            
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% block add_js %}
+ <!-- fetching products======= -->
+
+<script src="/static/Js/user-side-js/subcategory-js/getProd.js"></script>
+
+<script src="/static/Js/user-side-js/subcategory-js/sub_category.js"></script>
+<script type="text/javascript" src="/static/Js/user-side-js/user_home-js/home.js"></script>
+<script src="/static/Js/user-side-js/user_home-js/card.js"></script>
+<script src="/static/Js/user-side-js/user_home-js/all.js"></script>
+
+
+
+
+
+<script>
+   
+  $(document).ready(function(){
+ GetAllUnderTer( )
+ getallprod('{{CurrentSubCat.sub_category_id}}')
+rangePriceFilter()
+});
+
+
+visible = 12
+function relatedprod(undterName,add){
+  console.log(undterName)
+ if (add == '12') {
+      visible += 3;
+      console.log(visible);
+     }
+ 
+
+    $.ajax({
+    type: 'POST',
+    data: {'undtername': undterName, 'visible':visible},
+    url: '/relatedProdSubCatpage/',
+   
+      
+     success: function (response) {
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      console.log('fghhfh')
+      
+      var output = '';
+        for (i = 0; i < data.length; i++){
+       output +=`  
+          <li class="ml-5 text-center">
+              <span>
+                <div class="product_best_seller"><span>Best Seller</span></div>
+                <div class="product_wish_list_icon"><i class="fas fa-heart"></i></div>
+
+                <a href="/singleproduct/${data[i].prod_custom_id}">
+
+                  <div class="product_design_div pl-1 pt-1">
+
+                    <div class="product_image" style="width: 200px; height: 300px; ">
+                      <img src="/media/${data[i].product_image1}" alt="">
+                    </div>
+
+                    <div class="product_description text-center">
+
+                      <div class="font-weigght-light h5 mt-2">${truncateString(data[i].prod_title, 16)} </div>
+
+                       <div class="product_view_rating">
+                        <div class="product_rating">
+                          <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(15,000)
+                        </div>
+                      
+                      </div>
+                      <div class="product_pricing mt-1">
+                       
+                          <span class="font-weight-bold">&#x20B9; ${Math.trunc(data[i].off_price)} </span>
+                          <span class="original_price" style="text-decoration: line-through;">&#8377; ${Math.trunc(data[i].m_price)}  </span> <span class="" style="color:green;"> ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].off_price))}% dic</span>
+                          
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </span>
+            </li>
+                   
+         `;
+
+      }
+      document.getElementById("RP").innerHTML += output; 
+    }
+  });
+}
+
+
+
+
+
+
+visiblee = 12
+function PODSingleProdpage( add){
+   
+ if (add == '12') {
+      visiblee += 3;
+      console.log(visiblee);
+     }
+ 
+
+    $.ajax({
+    type: 'POST',
+    data: {  'visible':visiblee},
+    url: '/PODSubCatpage/',
+   
+      
+     success: function (response) {
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      console.log('fghhfh')
+      
+      var output = '';
+        for (i = 0; i < data.length; i++){
+       output +=`  
+          <li class="ml-5 text-center">
+              <span>
+                <div class="product_best_seller"><span>Best Seller</span></div>
+                <div class="product_wish_list_icon"><i class="fas fa-heart"></i></div>
+
+                <a href="/singleproduct/${data[i].prod_custom_id}">
+
+                  <div class="product_design_div pl-1 pt-1">
+
+                    <div class="product_image" style="width: 200px; height: 300px; ">
+                      <img src="/media/${data[i].product_image1}" alt="">
+                    </div>
+
+                    <div class="product_description text-center">
+
+                      <div class="font-weigght-light h5 mt-2">${truncateString(data[i].prod_title, 16)} </div>
+
+                       <div class="product_view_rating">
+                        <div class="product_rating">
+                          <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(15,000)
+                        </div>
+                      
+                      </div>
+                      <div class="product_pricing mt-1">
+                       
+                          <span class="font-weight-bold">&#x20B9; ${Math.trunc(data[i].off_price)} </span>
+                          <span class="original_price" style="text-decoration: line-through;">&#8377; ${Math.trunc(data[i].m_price)}  </span> <span class="" style="color:green;"> ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].off_price))}% dic</span>
+                          
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </span>
+            </li>
+                   
+         `;
+
+      }
+      document.getElementById("CODP").innerHTML += output; 
+    }
+  });
+}
+
+</script>
+
+ 
+  <script>
+   function addProductViews(ProductID){
+  console.log('product id')
+    console.log(ProductID);
+        
+     $.ajax({
+    type: 'POST',
+    data: {'id': ProductID},
+    url: '/customerView/',
+   
+      
+     success: function (response) {
+        console.log(response.prod)
+        
+    }
+     });
+   }
+
+ </script>
+
+
+ 
+{% endblock %}

@@ -1,0 +1,325 @@
+.banner
+{
+  width: 100%;
+  height: 300px;
+  margin-bottom: 5px;
+  /* height: 450px; */
+  background-color: #ffffff;
+  /* overflow: hidden; */
+  float: left;
+}
+
+.banner_category_div
+{
+  width: 14%;
+  height: 252px;
+  float: left;
+  padding-right: 10px;
+}
+
+.banner_category
+{
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 10px 0 5px -2px #888;
+}
+
+.banner_category > ul
+{
+  list-style: none;
+  padding: 0px;
+}
+
+.banner_category > ul > a
+{
+  color: black;
+  text-decoration: none;
+}
+
+.banner_category > ul > a:hover
+{
+  color: #e8d7d7;
+  font-weight: 600;
+}
+
+.banner_category > ul > a > li
+{
+  /* padding: 12px 2px; */
+  padding: 7px 2px;
+  border-bottom: 2px solid black;
+  /* transition: border 1s ease; */
+  position: relative;
+  text-align: center;
+}
+
+.banner_category > ul > a > li::after
+{
+  content: "";
+  width: 0%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-bottom: 2px solid #0064FF;
+  transition: width 1s ease;
+}
+
+/* .banner_category > ul > a > li:hover
+{
+  border-bottom: 2px solid #f34c4f;
+} */
+
+.banner_category > ul > a > li:hover::after
+{
+  width: 100%;
+  border-bottom: 2px solid #0064FF;
+  transition: width 1s ease;
+}
+
+.banner_category .active
+{
+  border-bottom: 2px solid #3383FF;
+  color:#0064ff ;
+  font-weight: 600;
+}
+
+/* Banner section */
+.banner_image_div
+{
+    width: 72%;
+    float: left;
+}
+
+.banner_image
+{
+  width: 100%;
+  height: 300px;
+  background-color: #984d4d;
+}
+
+.banner_image > img
+{
+  width: 100%;
+  height: 100%;
+}
+
+#womens_fashion_image,
+#baby_kid_fashion_image,
+#mobile_image,
+#electronic_image,
+#office_appliance_image
+{
+  display: none;
+}
+
+
+/* Right side INDIAN HAAT */
+.banner_indian_haat_div
+{
+  width: 13%;
+  height: 300px;
+  float: right;
+}
+
+.indian_haat
+{
+  width: 100%;
+  height: 100%;
+  background: gray;
+  float: left;
+}
+
+.indian_haat > img
+{
+  width: 100%;
+  height: 100%;
+  box-shadow: -2px 5px 7px black;
+}
+
+/* OUR FACILITY */
+.our_facility
+{
+  width: 100%;
+  height: auto;
+  /* background-color: #c2c5c5; */
+  border-top: 2px solid #777272;
+  border-bottom: 2px solid #777272;
+  /* margin-top: 20px; */
+  padding: 7px 0px;
+  float: left;
+}
+
+.our_facility a
+{
+  color: inherit;
+  text-decoration: none;
+}
+
+
+
+.logo
+{
+  float: left;
+  margin: 0px 10px;
+  width: 30%;
+}
+
+/* .logo > i
+{
+  font-size: 20px;
+} */
+
+.logo img
+{
+  /* width: 62%; */
+  width: 100%;
+}
+
+.text
+{
+  float: left;
+  text-align: left;
+  margin: 2px;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.text span
+{
+  font-size: 12px;
+  text-align: center;
+}
+
+
+/* ************************************************************************************************************ */
+/* **********************    Full New Design Started (21-Sep-2020) By SD.  ************************************ */
+/* ************************************************************************************************************ */
+
+
+/* *******************************      Ecclusive category div   ******************************************** */
+ 
+/* *******************************      Ecclusive category div End  ******************************************** */
+
+/* *********************************      Weekly dreals  *********************************************** */
+ 
+/* *******************************      Weekly dreals End  ******************************************** */
+
+/* *******************************      Featured Category Start  ******************************************** */
+  
+/* *******************************      Featured Category End  ********************************************* */
+
+
+/* *******************************      Banner1 End  ********************************************* */
+.advatice_banner{
+  margin: 20px 0px;
+  float: left;
+}
+
+.advatice_banner img{
+  width: 100%;
+}
+
+.advatice_banner .single_advatice_banner{
+  width: 100%;
+  height: 150px;
+}
+
+.advatice_banner .tripel_advatice_banner{
+  width: 100%;
+  height: 312px;
+}
+
+/* .banner_1_img{
+  width: 450px;
+  height: 276px;
+} */
+/* *******************************      Banner1 End  ********************************************* */
+
+
+/* ************************************************************************************************************ */
+/* ********************    Full New Design Started (21-Sep-2020) By SD.(End)  ********************************** */
+/* ************************************************************************************************************ */
+
+/* ============================= Scroll */
+
+
+
+/* ----------------------------------------------------------------------------------------------------- */
+/* ----------------------------------- Responsive desing Start ------------------------------------------- */
+@media only screen and (min-width: 769px){
+.facility_tab
+{
+  width: 100%;
+  height: 62px;
+  border: 2px solid #c5bfbf;
+  border-radius: 14px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  transition: all 1s;
+}
+
+.facility_tab:hover
+{
+  box-shadow: 0px 0px 3px 5px #0064ff;
+  transform: scale(1.05);
+  transition: all 0.8s;
+}
+}
+/* --------------------------another screen size 769 start---------------------------- */
+
+@media only screen and (max-width: 769px) {
+  .banner_image_div{
+    width: 100%;
+     
+  }
+
+/* --------------------------------- image banner start ------------------------------------ */
+.banner_image > img
+{
+  width: 100%;
+  height: 200%;
+}
+.banner_image
+{
+  width: 100%;
+  height: 200px;
+  background-color: #984d4d;
+}
+.banner
+{
+  width: 100%;
+  height: 200px;
+  margin-bottom: 5px;
+  /* height: 450px; */
+  background-color: #ebecec;
+  /* overflow: hidden; */
+  float: left;
+}
+/* --------------------------------- image banner end ------------------------------------ */
+
+/* ------------------------------ Our facility start  -------------------- */
+  .text
+{
+   
+  display: none;
+}
+.increase-height{
+  height: 50px !important;
+}
+.logo
+{
+  float: left;
+  margin: 0px 10px;
+  width: 50%;
+}
+
+.margin-paddin-0px{
+  margin: 0px !important;
+  padding: 0px !important;
+}
+/* -------------------Our facility start end -------------------- */
+
+
+/* ----------------------------------- Responsive desing Stop ------------------------------------------- */
+/* ----------------------------------------------------------------------------------------------------- */

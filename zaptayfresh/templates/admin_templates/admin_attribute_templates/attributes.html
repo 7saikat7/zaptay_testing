@@ -1,0 +1,748 @@
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Attribute{% endblock %}
+
+{% block custom_css %}
+  <style>
+    .error
+    {
+      font-size: 15px;
+      color: red;
+      font-weight: 600;
+    }
+
+    .success
+    {
+      font-size: 15px;
+      color: green;
+      font-weight: 600;
+    }
+
+    .custom-card-body
+    {
+      height: 260px;
+      overflow-y: scroll;
+    }
+
+    .custom-card-body::-webkit-scrollbar {
+      display: none;
+    }
+
+    .delete_assets
+    {
+      color: red;
+    }
+
+    ul
+    {
+      padding: 0px 10px;
+    }
+  </style>
+{% endblock %}
+
+{% block page_body %}
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Attributes</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+
+    <!-- Category -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Category</h6>
+      </div>
+      <div class="card-body">
+        <!-- Category Form -->
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "category" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ category_form.category_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block" name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <!-- Category Form End -->
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body custom_category_body">
+                <ol>
+                  {% if category_list %}
+                    {%for i in category_list %}
+                      <li>{{i.main_category_name}} &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('category', '{{ i.main_category_name }}', '{{ i.category_id }}');"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+    <!-- Category end-->
+
+  </div>
+
+
+
+
+   <!-- Sub Category -->
+  <div class="col-lg-4">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Sub category</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "sub_category" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-12">
+              <!-- <select class="browser-default custom-select">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select> -->
+              {{ sub_category_form.category_list }}
+            </div>
+            <br /><br />
+            <div class="col-lg-6">
+              {{ sub_category_form.sub_category_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block" name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+
+
+        
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  Launch demo modal
+                </button> -->
+                <div class="row">
+                  <div class="col-md-12">
+                    <ul>
+                      <li><strong>Featured</strong></li>
+                      <ul>
+                        {% if sub_category_list %}
+                          {%for i in sub_category_list %}
+                            {% if i.category_id.main_category_name == 'featured' %}
+                              <li>{{i.sub_category_name}} &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('sub_category', '{{ i.sub_category_name }}', {{ i.sub_category_id }});"><i class="fas fa-times"></i></a></li>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </ul>
+                    </ul>
+                  </div>
+                  <div class="col-md-12">
+                    <ul>
+                      <li><strong>Exclusive</strong></li>
+                      <ul>
+                        {% if sub_category_list %}
+                          {%for i in sub_category_list %}
+                            {% if i.category_id.main_category_name == 'exclusive' %}
+                              <li><a href="javascript:void(0);" onclick="show_image_modal('sub_category', '{{ i.sub_category_id }}');">{{i.sub_category_name}}</a> &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('sub_category', '{{ i.sub_category_name }}', {{ i.sub_category_id }});"><i class="fas fa-times"></i></a></li>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </ul>
+                    </ul>
+                  </div>
+                  <div class="col-md-12">
+                    <ul>
+                      <li><strong>Indian Hatt</strong></li>
+                      <ul>
+                        {% if sub_category_list %}
+                          {%for i in sub_category_list %}
+                            {% if i.category_id.main_category_name == 'indian hatt' %}
+                              <li><a href="javascript:void(0);" onclick="show_image_modal('sub_category', '{{ i.sub_category_id }}');">{{i.sub_category_name}}</a> &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('sub_category', '{{ i.sub_category_name }}', {{ i.sub_category_id }});"><i class="fas fa-times"></i></a></li>
+                            {% endif %}
+                          {% endfor %}
+                        {% endif %}
+                      </ul>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+   <!-- Sub Category end -->
+
+
+   <!-- tertiary Category -->
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Tertiary category</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "terriary_category" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-md-12">
+              {{ tertia_form.sub_category_list }}
+            </div>
+            <br /><br />
+            <div class="col-lg-6">
+              {{ tertia_form.tert_category_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if ter_category_list %}
+                    {%for i in ter_category_list %}
+                      <li>{{ i.sub_category_id.sub_category_name }} --> <a href="javascript:void(0);" onclick="show_image_modal('tertiary_category', '{{ i.ter_category_id }}');">{{i.ter_category_name}}</a> &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('tertiary_category', '{{ i.ter_category_name }}', '{{ i.ter_category_id }}');"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+   <!-- tertiary Category end -->
+
+
+   <!-- Under Tertiary Category -->
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Under Tertiary category</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "under_terriary_category" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-md-12">
+              {{ under_tertia_form.tert_category_list }}
+            </div>
+            <br /><br />
+            <div class="col-lg-6">
+              {{ under_tertia_form.under_tert_category_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if under_ter_caregory_list %}
+                    {%for i in under_ter_caregory_list %}
+                      <li><a href="javascript:void(0);" onclick="show_image_modal('under_tertiary_category', '{{ i.under_ter_category_id }}');">{{i.under_ter_category_name}}</a> &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('under_tertiary_category', '{{ i.under_ter_category_name }}', '{{ i.under_ter_category_id }}');"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- Under Tertiary Category  end-->
+
+<!-- Brand -->
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Brand</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "brand" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ brand_form.brand_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block" name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if brand_list %}
+                    {%for i in brand_list %}
+                      <li><a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalbrand{{forloop.counter}}">{{i.brand_name}}</a> &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('brand', '{{ i.brand_name }}', {{ i.brand_id }});"><i class="fas fa-times"></i></a></li>
+                   
+
+                       <!-- modal -->
+                   <div class="modal fade" id="exampleModalbrand{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">{{i.brand_name}}</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/zaptay-admin-login/attribute/brandimg/" method="POST" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                <input type="hidden" name="brandid" value="{{i.brand_id}}">
+                              <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Enter Image Of {{i.brand_name}} Brand</label>
+                                   <input type="file" name="setbrandimg" id="files"   class="box-file" data-caption="..."  >
+                                </div>
+                                <button type="submit"class="btn btn-primary">Save changes</button>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   <!-- modal end -->
+
+
+                      {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- Brand end-->
+
+
+
+<!-- Color -->
+
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Color</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "colour" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ color_form.color_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if color_list %}
+                    {%for i in color_list %}
+                      <li><a href="javascript:void(0);" data-toggle="modal" data-target="#exampleModalcolor{{forloop.counter}}">{{i.color_name}}</a>  &nbsp;&nbsp; <a href="javascript:void(0);" class="delete_assets" onclick="return delete_attributes('color', '{{ i.color_name }}', {{ i.color_id }});"><i class="fas fa-times"></i></a></li>
+                   
+                   <!-- modal -->
+                   <div class="modal fade" id="exampleModalcolor{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">{{i.color_name}}</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/zaptay-admin-login/attribute/colimg/" method="POST" enctype="multipart/form-data">
+                                {%csrf_token%}
+                                <input type="hidden" name="colorid" value="{{i.color_id}}">
+                              <div class="form-group">
+                                  <label for="exampleFormControlSelect1">Enter Image Of {{i.color_name}} Colour</label>
+                                   <input type="file" name="setcolorimg" id="filescolr"   class="box-file" data-caption="..."  >
+                                </div>
+                                <button type="submit"class="btn btn-primary">Save changes</button>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                   <!-- modal end -->
+                   
+                   
+                      {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- Color end-->
+
+
+<!-- Size -->
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Size</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "size" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ size_form.size_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if size_list %}
+                    {%for i in size_list %}
+                      <li>{{i.size_name}} &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('size', '{{ i.size_name }}', {{ i.size_id }});"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- Size end-->
+
+
+<!-- Product source or mmade in  -->
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Product source</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "source" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ source_form.source_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if source_list %}
+                    {%for i in source_list %}
+                      <li>{{i.source_name}} &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('source', '{{ i.source_name }}', {{ i.source_id }});"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- Product source or mmade in end -->
+
+
+<!-- same day delivery pin code  -->
+
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Same Day Delivary Pin code</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "same_day_pin" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ same_day_pincode_form.same_day_pin_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if same_day_pin_list %}
+                    {%for i in same_day_pin_list %}
+                      <li>{{i.pincode}} &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('same_day_pin', '{{ i.pincode }}', {{ i.same_day_pin_id }});"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- same day delivery pin code  end-->
+
+
+<!-- next day delivery pin code  -->
+
+  <div class="col-lg-4">
+
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Next Day Delivary Pin code</h6>
+      </div>
+      <div class="card-body">
+        <form method="POST">
+          <div class="row">
+            <div class="col-lg-12">
+              {% if messages %}
+                {% for message in messages %}
+                  {% if message.extra_tags == "next_day_pin" %}
+                    <span class="{{ message.tags }}">{{ message }}</span>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            </div>
+            <div class="col-lg-6">
+              {{ next_day_pincode_form.next_day_pin_add_form }}
+            </div>
+            {% csrf_token %}
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-success btn-user btn-block name="button">Add</button>
+            </div>
+          </div>
+        </form>
+        <br />
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card mb-4 py-3 border-left-primary">
+              <div class="card-body custom-card-body">
+                <ol>
+                  {% if next_day_pin_list %}
+                    {%for i in next_day_pin_list %}
+                      <li>{{i.pincode}} &nbsp;&nbsp; <a href="" class="delete_assets" onclick="return delete_attributes('next_day_pin', '{{ i.pincode }}', {{ i.next_day_pin_id }});"><i class="fas fa-times"></i></a></li>
+                    {% endfor %}
+                  {% endif %}
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<!-- same day delivery pin code end -->
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="POST" id="attribute_image" enctype="multipart/form-data">
+        <div class="modal-body">
+          <div class="modal_loader">
+            <span>Load data...</span>
+          </div>
+          <div class="model_form_content">
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Sub category name:</label>
+              <input type="text" class="form-control category_name" id="recipient-name"  readonly="readonly">
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFileLang" lang="pl-Pl">
+              <label class="custom-file-label" for="customFileLang">Upload Image</label>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Image Preview</label>
+              <span class="preview_img"></span>
+            </div>
+            <input type="hidden" class="sub_category_id" name="sub_category_id" value="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <span class="message"></span>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary submit">Save changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+{% block custom_js %}
+  <script type="text/javascript" src="/static/Js/admin-side-JS/admin_attribute_js/attribute.js"></script>
+
+  
+
+<!-- font awsome -->
+<script src="/static/Js/admin-side-JS/admin_attribute_js/fontawsome-JS/all.js"></script>
+ 
+{% endblock %}

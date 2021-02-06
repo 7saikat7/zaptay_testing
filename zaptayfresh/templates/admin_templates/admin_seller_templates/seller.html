@@ -1,0 +1,217 @@
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Add Seller{% endblock  %}
+
+{% block custom_css %}
+
+  <!-- Custom fonts for this template-->
+  <link href="/static/css/admin-side-CSS/admin-seller-css/fontawsome-free-css/all.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="/static/css/admin-side-CSS/admin-seller-css/sb-admin-2.css" rel="stylesheet">
+
+  
+  <style media="screen">
+    .error_msg
+    {
+      color: red;
+    }
+    .error_msg>ul
+    {
+      margin-bottom: 0px;
+    }
+    </style>
+{% endblock  %}
+ 
+ 
+
+{% block page_body %}
+ 
+
+
+
+          
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Seller Details</h1>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <!-- Basic Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ seller.seller_id }}</h6>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-md-8">
+              <div class="form-group">
+                <label for="seller_title" class="mentetory">Seller Title</label>
+                <input type="text" class="form-control" id="seller_title" placeholder="Seller Title" value="{{ seller.seller_CompanyName }}" readonly>
+              </div>
+
+              <div class="form-group">
+                <label for="seller_name" class="mentetory">Seller Name</label>
+                <input type="text" class="form-control" id="seller_name" placeholder="Seller Name" value="{{ seller.seller_name }}" readonly>
+              </div>
+              
+              <div class="form-group">
+                <label for="seller_name" class="mentetory">Seller Password</label>
+                <input type="text" class="form-control" id="seller_Password" placeholder="Seller PassWord" value="{{ seller.seller_PWD }}" readonly>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="seller_email_id" class="mentetory">Seller Email Id</label>
+                  <input type="email" class="form-control" id="seller_email_id" placeholder="Email Id" value="{{ seller.seller_email_id }}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="seller_ph_no" class="mentetory">Seller Phone no</label>
+                  <input type="text" class="form-control" id="seller_ph_no" placeholder="Phone No" value="{{ seller.seller_phone_no }}" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-md-4 text-center">
+              {%if seller.SellerImage %}
+              <img src="{{ seller.SellerImage.url }}" style="width: 135px; height:180px;" alt="">
+              {%endif%}
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="seller_address">Seller Address</label>
+              <textarea class="form-control" id="seller_address" rows="5" readonly>{{ seller.seller_address }}</textarea>
+            </div>
+            <div class="form-group col-md-12">
+              <label for="seller_address">Seller Bank Details</label>
+              <textarea class="form-control" id="BankDetails" rows="5" readonly>{{ seller.Seller_BankDetails }}</textarea>
+            </div>
+
+            <div class="form-group col-md-12">
+              <label for="seller_specufication">Seller Specification</label>
+              <input type="text" class="form-control" id="seller_specufication" placeholder="Seller specification" value="{{ seller.seller_specification }}" readonly>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="gst_no" class="mentetory">GST No.</label>
+              <input type="text" class="form-control" id="gst_no" placeholder="GST NO." value="{{ seller.seller_gst_no }}" readonly>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="aadhaar" class="mentetory">Aadhaar No</label>
+              <input type="text" class="form-control" id="aadhaar" placeholder="Aadhaar No." value="{{ seller.seller_aadhaar_no }}" readonly>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="voter_no" class="mentetory">Voter Card No</label>
+              <input type="text" class="form-control" id="voter_no" placeholder="Voter No." value="{{ seller.seller_voter_no }}" readonly>
+            </div>
+
+
+            <div class="form-group col-md-4 text-center">
+              <img src="{{ seller.SellerGstImage.url }}" style="width: 135px; height:180px;" alt="">
+              <div class="text-center pt-3">
+                
+              <a href="{{ seller.SellerGstImage.url }}" download > <span class="btn btn-primary"> Download</span></a>
+              </div>
+            </div>
+
+            <div class="form-group col-md-4 text-center">
+              <img src="{{ seller.SellerAdhaarImage.url }}" style="width: 135px; height:180px;" alt="">
+            
+              <div class="text-center pt-3">
+                <a href="{{ seller.SellerAdhaarImage.url }}" download > <span class="btn btn-primary"> Download</span></a>
+              </div>
+            </div>
+            <div class="form-group col-md-4 text-center">
+              <img src="{{ seller.SellerVoterImage.url }}" style="width: 135px; height:180px;" alt="">
+            
+              <div class="text-center pt-3">
+                <a href="{{ seller.SellerVoterImage.url }}" download > <span class="btn btn-primary"> Download</span></a>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="aadhaar" class="mentetory">Aadhaar No</label>
+              <input type="text" class="form-control" id="aadhaar" placeholder="Aadhaar No." value="{{ seller.seller_aadhaar_no }}" readonly>
+            </div>
+            <div class="form-group col-md-4">
+              <img src="  style="width: 135px; height:180px;" alt="">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-7">
+              <label for="voter_no" class="mentetory">Voter Card No</label>
+              <input type="text" class="form-control" id="voter_no" placeholder="Voter No." value="{{ seller.seller_voter_no }}" readonly>
+            </div>
+            <div class="form-group col-md-4">
+              <img src=" " style="width: 135px; height:180px;" alt="">
+            </div>
+          </div> -->
+          <!-- <button type="submit" class="btn btn-success btn-lg" style="width: 180px">Submit</button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+
+
+          <!-- Footer -->
+          <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+              <div class="copyright text-center my-auto">
+                <span>Copyright &copy; zaptay.com 2020</span>
+              </div>
+            </div>
+          </footer>
+          <!-- End of Footer -->
+
+
+
+ 
+                <!-- end Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+ 
+{% endblock %}
+ 
+
+
+
+
+
+
+{% block custom_js %}
+
+  
+      <!-- Bootstrap core JavaScript-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/bootstrapJS/jquery.min.js"></script>
+      <script src="/static/Js/admin-side-JS/admin-seller-js/bootstrapJS/bootstrap.bundle.min.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/PluginJS/jquery.easing.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/sb-admin-2.js"></script>
+
+      <!-- fontawsome -->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/fontawsomeJS/all.js"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+      
+ 

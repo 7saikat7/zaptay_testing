@@ -1,0 +1,228 @@
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Offer{% endblock  %}
+{% block custom_css %}
+<!-- Data table css bootstrap -->
+<link rel="stylesheet" href="/static/css/admin-side-CSS/admin-all_product-list-css/datable_bootstrap/bootstrap4_datatable.css">
+<link rel="stylesheet" href="/static/css/admin-side-CSS/admin-all_product-list-css/datable_bootstrap/cloudflare_datatable.css">
+ 
+{% endblock  %}
+{% block page_body %}
+ 
+   <!-- Begin Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+               <div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800 ">All About Policy</h1>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <!-- Basic Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-body">
+     
+        <!-- Form 1 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">
+          {% csrf_token %}
+          <div class="form-group ">
+            <label for="Product_Authentication_Policy">1. Product Authentication Policy</label>
+            <textarea class="form-control" id="Product_Authentication_Policy" name="Product_Authentication_Policy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 1 End -->
+        
+
+        <!-- Form 2 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">2. Cash On Delivery Policy</label>
+            <textarea class="form-control" id="CashOnDeliveryPolicy" name="CashOnDeliveryPolicy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+        <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 2 End -->
+
+        <!-- Form 3 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">3. Online Payment Policy</label>
+            <textarea class="form-control" id="OnlinePaymentPolicy" name="OnlinePaymentPolicy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+       <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 3 End -->
+
+        <!-- Form 4 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">4. Free Shipping Policy</label>
+            <textarea class="form-control" id="FreeShippingPolicy"  name="FreeShippingPolicy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+           <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 4 End -->
+
+        <!-- Form 5 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1"> 5. Return Policy  </label>
+            <textarea class="form-control" id="Return_Policy" name="Return_Policy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+<button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 5 End -->
+
+        <!-- Form 6 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">6. Membership Policy  </label>
+            <textarea class="form-control" id="MembershipPolicy" name="MembershipPolicy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+           <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 6 End -->
+
+        <!-- Form 7 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">7. Best Seller  </label>
+            <textarea class="form-control" id="BestSeller" name="BestSeller" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+           <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 7 End -->
+
+        <!-- Form 8 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">8. Super Deal  </label>
+            <textarea class="form-control" id="SuperDeal" name="SuperDeal" rows="3"></textarea>
+          </div >
+          <div class="text-center">
+          <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 8 End -->
+
+        <!-- Form 9 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">9. Membership Zone  </label>
+            <textarea class="form-control" id="MembershipZone" name="MembershipZone" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 9 End -->
+
+        <!-- Form 10 -->
+       <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">10. Event Coupon  </label>
+            <textarea class="form-control" id="EventCoupon" name="EventCoupon" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 10 End -->
+
+        <!-- Form 11 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">11. Send Gift  </label>
+            <textarea class="form-control" id="SendGift" name="SendGift" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+           <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 11 End -->
+
+        <!-- Form 12 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">12. Terms & Policy  </label>
+            <textarea class="form-control" id="TermsPolicy" name="TermsPolicy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+           <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 12 End -->
+
+        <!-- Form 13 -->
+        <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">13. Privacy  </label>
+            <textarea class="form-control" id="Privacy" name="Privacy" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+<button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 13 End -->
+
+        <!-- Form 14 -->
+       <form method="POST" action="{% url 'admin_login:Policy:Policy' %}" class="my-5">  {% csrf_token %}
+          <div class="form-group my-5">
+            <label for="exampleFormControlTextarea1">14. Contact Us  </label>
+            <textarea class="form-control" id="ContactUs" name="ContactUs" rows="3"></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">Submit</button>
+          </div>
+        </form>
+        <!-- Form 14 End -->
+ 
+        
+        
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ 
+                <!-- end Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+ 
+{% endblock %}
+ 
+
+
+{% block custom_js %}
+
+  
+
+ 
+  <!-- Fontawsome JS -->
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/all.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/brands.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/conflict-detection.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/fontawesome.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/regular.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/solid.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/v4-shims.js"></script>
+
+	<script type="text/javascript" language="javascript" src="/static/Js/admin-side-JS/admin-all-product-js/datatables_js/jquery_datatable.js"></script>
+	<script type="text/javascript" language="javascript" src="/static/Js/admin-side-JS/admin-all-product-js/datatables_js/bootstrapTable.js"></script>
+
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Offer{% endblock  %}
+{% block custom_css %}
+<!-- Data table css bootstrap -->
+<link rel="stylesheet" href="/static/css/admin-side-CSS/admin_all_seller_list-css/datable_bootstrap/bootstrap4_datatable.css">
+<link rel="stylesheet" href="/static/css/admin-side-CSS/admin_all_seller_list-css/datable_bootstrap/cloudflare_datatable.css">
+ 
+{% endblock  %}
+{% block page_body %}
+  <!-- Begin Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+               <div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Order Waiting List</h1>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <!-- Basic Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3" >
+        <div class="row">
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-6 text-center">
+                        <a class="nav-link" href="{% url 'admin_login:OrderListWaiting' %}"><button class="btn pr-3 btn-primary">Order Waiting List</button></a> 
+                    </div>
+                    <div class="col-6">
+                         <a class="nav-link" href="{% url 'admin_login:OrderListDelivered' %}"><button class="btn btn-primary">Order Sold List</button></a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="card-body">
+     
+        <div>
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="table-responsive">
+          <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr> 
+                <th>#</th>
+                <th>Date</th>
+                <th>Product ID</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Payment Method</th>
+                <th>User Address</th>
+                <th>Seller</th>
+                 <th>Date Of Delivery</th>
+                 <th>Process  To Dispatch</th>
+            </tr>
+        </thead>
+        <tbody>
+         
+            <tr>
+                <td class="text-center">1</td>
+                <td class="text-center">25-12-2021</td>
+                <td class="text-center">XY-zsd</td>
+                <td class="text-center">1</td>
+                <td class="text-center">1500</td>
+                <td class="text-center">COD</td>
+                <td class="text-center">Surat Gujrat</td>
+               
+                <td class="text-center"> Copper Buck pvt ltd</td>
+                <td class="text-center"> 25-12-2021</td>
+                 <td class="text-center"> <button class="btn btn-primary">Process</button>   </td>
+            </tr>
+         
+            
+        </tbody>
+    </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+                <!-- end Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+ 
+{% endblock %}
+ 
+
+
+{% block custom_js %}
+
+  
+
+ 
+  <!-- Fontawsome JS -->
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/all.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/brands.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/conflict-detection.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/fontawesome.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/regular.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/solid.js"></script>
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/fontawsomeJS/v4-shims.js"></script>
+
+  <script>
+    $(document).ready(function() {
+    $('#example').DataTable();
+    
+} );
+  </script>
+	<script type="text/javascript" language="javascript" src="/static/Js/admin-side-JS/admin_all_seller_List-js/datatables_js/jquery_datatable.js"></script>
+	<script type="text/javascript" language="javascript" src="/static/Js/admin-side-JS/admin_all_seller_List-js/datatables_js/bootstrapTable.js"></script>
+
+ 
+{% endblock %}

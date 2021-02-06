@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Zaptay - Login</title>
+
+  <!-- Custom fonts for this template-->
+  <!-- <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="/static/admin_static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <!-- <link href="/static/admin_static/css/sb-admin-2.min.css" rel="stylesheet"> -->
+  <link href="/static/css/admin-side-CSS/admin_login-css/sb-admin-2.css" rel="stylesheet">
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <style>
+    .bg-login-image {
+  /* background: url("https://source.unsplash.com/K4mSJ7kc0As/600x800"); */
+  background: url("http://placehold.it/600x800?text=Zaptay.com");
+  background-position: center;
+  background-size: cover;
+}
+
+
+.circ{
+    opacity: 0;
+    stroke-dasharray: 130;
+    stroke-dashoffset: 130;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+.tick{
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    -webkit-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -moz-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -ms-transition: stroke-dashoffset 1s 0.5s ease-out;
+    -o-transition: stroke-dashoffset 1s 0.5s ease-out;
+    transition: stroke-dashoffset 1s 0.5s ease-out;
+}
+.drawn + svg .path{
+    opacity: 1;
+    stroke-dashoffset: 0;
+}
+  </style>
+</head>
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center pt-5 mt-5">
+
+      <div class="col-xl-10 col-lg-12 col-md-9 mt-5">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row ">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div><!-- bg-login-image class is responsible for zaptay.com text -->
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Enter Your Registered Email ID</h1>
+                    <small style="color: red; font-weight: 700;">{{ db_error }}</small>
+                    {% if form.errors %}
+                    <!-- {{form.errors}} -->
+                      {% if form.email_id_forReset.errors %}
+                        <p>
+                          <small style="color: red; font-weight: 700;">{{form.email_id.errors|striptags}}</small>
+                        </p>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                  <form class="user" method="POST">
+                      {% csrf_token %}
+                    <div class="form-group">
+                     {{ form.email_id_forReset }}
+                    </div>
+                  
+                  
+               
+                     <button type="submit" class="btn btn-primary btn-user btn-block">Send Mail</button>
+                     
+                  
+                  </form>
+             
+                   
+                </div>
+              
+              
+              
+              
+              
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+</div>
+  
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="/static/admin_static/vendor/jquery/jquery.min.js"></script>
+  <script src="/static/admin_static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="/static/admin_static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="/static/Js/admin-side-JS/admin-dashboard-JS/sb-admin-2.min.js"></script>
+
+  <!-- My Custom JS  -->
+  <script src="/static/Js/admin-side-JS/admin_login_js/login.js"></script>
+  
+   
+</body>
+
+</html>

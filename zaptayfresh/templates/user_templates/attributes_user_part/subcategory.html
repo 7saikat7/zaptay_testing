@@ -1,0 +1,643 @@
+{% extends 'user_template/base_template.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'user_static/css/subcategory.css' %}">
+<link rel="stylesheet" href="{% static 'user_static/css/home.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+
+<style>
+  .dropdown-hover>a:hover {
+    background-image: none;
+    background-color: #ffc107;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="banner">
+  <div class="left_small_banner">
+    {% if sides_banners.left %}
+    <img src="/media/{{ sides_banners.left.banner_image }}" alt="">
+    {% else %}
+    <img src="{% static 'site_image/135x180.png' %}" alt="">
+    {% endif %}
+  </div>
+  <div class="middle_banner">
+    {% if sides_banners.middle_banner %}
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        {% for single_image in sides_banners.middle_banner %}
+        <li data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter }}"
+          {% if forloop.counter == 1 %}class="active" {% endif %}></li>
+        <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li> -->
+        {% endfor %}
+      </ol>
+      <div class="carousel-inner">
+        {% for single_image in sides_banners.middle_banner %}
+        <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+          <a href="">
+            <div class="banner_image">
+              {% if single_image.banner_image %}
+              <img src="/media/{{ single_image.banner_image }}" alt="">
+              {% else %}
+              <img src="{% static '/site_image/banner1.jpg' %}" alt="">
+              {% endif %}
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+        <!-- <div class="carousel-item">
+              <div class="banner_image">
+                <img src="{% static '/site_image/banner1.jpg' %}" alt="">
+              </div>
+            </div> -->
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    {% endif %}
+  </div>
+  <div class="right_small_banner">
+    {% if sides_banners.right %}
+    <img src="/media/{{ sides_banners.right.banner_image }}" alt="">
+    {% else %}
+    <img src="{% static 'site_image/135x180.png' %}" alt="">
+    {% endif %}
+  </div>
+</div>
+
+<!-- ===================================================== Sub Category ===================================================== -->
+<div class="sub_category">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="left_arrow exclusive_left_arrow tertiory_category_scroll_left"><i class="fas fa-caret-left"></i>
+        </div>
+        <div class="right_arrow exclusive_right_arrow tertiory_category_scroll_right"><i class="fas fa-caret-right"></i>
+        </div>
+        <div class="product_section" id="sub_category_product_section">
+          <ul>
+            {% if tertiory_category %}
+            {% for tertiory_category_single in tertiory_category %}
+            <li>
+              <span>
+                <a href="">
+                  <div class="category_blog_design">
+                    <div class="category_image">
+                      {% if tertiory_category_single.image %}
+                      <img src="/media/{{ tertiory_category_single.image }}" alt="">
+                      {% else %}
+                      <img src="{% static 'site_image/135x180.png' %}" alt="">
+                      {% endif %}
+                    </div>
+                    <div class="category_title">{{ tertiory_category_single.tertiory_name }}</div>
+                  </div>
+                </a>
+              </span>
+            </li>
+            {% endfor %}
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% if under_tertiory_category %}
+<div class="sub_category tertiary_category">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="left_arrow exclusive_left_arrow"><i class="fas fa-caret-left"></i></div>
+        <div class="right_arrow exclusive_right_arrow"><i class="fas fa-caret-right"></i></div>
+        <div class="product_section" id="tertiary_category_product_section">
+          <ul>
+            {% for single_under_tertiory_category in under_tertiory_category %}
+            <li>
+              <span>
+                <a href="">
+                  <div class="category_blog_design">
+                    <div class="category_image">
+                      <img src="{% static 'site_image/135x180.png' %}" alt="">
+                    </div>
+                    <div class="category_title">
+                      <span>{{ single_under_tertiory_category.under_ter_category_name }}</span>
+                    </div>
+                  </div>
+                </a>
+              </span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<!-- =================================================== Sub Category End =================================================== -->
+
+<!-- ===================================  Breadcrumbs start  ================================================================ -->
+<div class="breadcrumbs_div">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="breadcrumbs">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="breadcrumbs_title" style="height: 100%;">
+                <div class="sub_category_title mt-1">
+                  <span>{{ breadcrumbs_category.sub_category }} category </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="breadcrumbs_childs">
+                <ul>
+                  <li>
+                    <a href="{% url 'home:homepage' %}"><i class="fas fa-home"></i></a>
+                  </li>
+                  <li>
+                    <a href="#"><span>{{ breadcrumbs_category.sub_category }} category</span></a>
+                  </li>
+                </ul>
+                <div class="total_product_showing">Showing 1-40 products of 150 Products
+                </div>
+              </div>
+            </div>
+            <!-- Drop Downbutton -->
+            <div class="col-3">
+
+              <div class="breadcrumps-btn-group text-center">
+                <!-- Stock view button -->
+                <div class="dropdown   ">
+                  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-size: 11px;">
+                    <img src="/static/site_image/open-box-1.svg" width="15" height="15" alt=""> Stock view
+                  </button>
+                  <div class="dropdown-menu dropdown-hover" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i class="fas fa-check" style="font-size: 10px;"></i> Excluding
+                      out of stocks</a>
+                    <a class="dropdown-item" href="#"><i class="fas fa-check" style="font-size: 10px;"></i> Including
+                      out of stocks</a>
+
+                  </div>
+                </div>
+                <!--  view button end -->
+
+                <!-- view button -->
+                <div class="dropdown   ">
+                  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-size: 11px;">
+                    <i class="fas fa-eye"></i> View
+                  </button>
+                  <div class="dropdown-menu dropdown-hover text-center" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><svg width="14px" height="14px" viewBox="0 0 16 16"
+                        class="bi bi-ui-checks-grid" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M2 10a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1H2zm9-9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-3zm0 9a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1h-3zm0-10a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-3zM2 9a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H2zm7 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-3a2 2 0 0 1-2-2v-3zM0 2a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.354.854l-2 2a.5.5 0 0 1-.708 0l-1-1a.5.5 0 1 1 .708-.708L3 3.793l1.646-1.647a.5.5 0 1 1 .708.708z" />
+                      </svg> By Grid</a>
+                    <a class="dropdown-item" href="#"><svg width="14px" height="14px" viewBox="0 0 16 16"
+                        class="bi bi-list-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3.854 2.146a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 3.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708L2 7.293l1.146-1.147a.5.5 0 0 1 .708 0zm0 4a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z" />
+                      </svg> By List</a>
+                  </div>
+                </div>
+                <!--  view button end -->
+
+                <!-- ShortBy   button -->
+                <div class="dropdown  ">
+                  <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style=" font-size: 11px;">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-steps" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M.5 0a.5.5 0 0 1 .5.5v15a.5.5 0 0 1-1 0V.5A.5.5 0 0 1 .5 0z" />
+                      <rect width="5" height="2" x="2" y="1" rx=".5" />
+                      <rect width="8" height="2" x="4" y="5" rx=".5" />
+                      <path
+                        d="M6 9.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-6a.5.5 0 0 1-.5-.5v-1zm2 4a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1z" />
+                    </svg> Short By
+                  </button>
+                  <div class="dropdown-menu dropdown-hover" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#"><i class="fas fa-chart-line"></i> Trending</a>
+                    <a class="dropdown-item" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                      </svg> Low - High Price</a>
+                    <a class="dropdown-item" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                      </svg> High - Low Price</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-arrow-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z" />
+                      </svg> Low - High Rating</a>
+                    <a class="dropdown-item" href="#"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-arrow-up" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+                      </svg> High - Low Rating</a>
+                  </div>
+                </div>
+                <!-- ShortBy button end -->
+              </div>
+            </div>
+            <!-- Dropdown button end -->
+          </div>
+        </div>
+      </div>
+      <!-- ===================================  Breadcrumbs end  ================================================================== -->
+      <!-- ========================================================================================================================== -->
+      <!-- =================================  New Design Stared From (12-Nov-2020) By RS. ============================================ -->
+      <!-- ========================================================================================================================== -->
+
+
+      <!-- =================================== Shopping Cart Section  ================================================================== -->
+      <div class="  mx-3" style="  margin-top: 15px; margin-bottom: 15px ; width: 100%;">
+
+        <div class="row">
+
+          <div class="col-4">
+             <!-- brand names -->
+            <div class="container-fluid bg-light">
+              <h5 style="font-size: 15px; padding-top: 10px;"><i class="fas fa-circle text-warning "
+                  style="font-size: 12px; padding-right:5px ;"></i> Brand Names</h5>
+
+              <form class="example  ">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit" class="bg-warning"><i class="fa fa-search"></i></button>
+              </form>
+
+              <div>
+                df
+              </div>
+
+              <div class="my-5 text-right">
+                <a href="#" style="text-decoration: none;">
+                  <h5 class="text-danger font-weight-bold" style="font-size: 15px;">
+                    See More...
+                  </h5>
+                </a>
+              </div>
+
+            </div>
+            <!-- brand names end -->
+               <!-- brand names -->
+            <div class="container-fluid bg-light">
+              <h5 style="font-size: 15px; padding-top: 10px;"><i class="fas fa-circle text-warning "
+                  style="font-size: 12px; padding-right:5px ;"></i> Brand Names</h5>
+
+              <form class="example  ">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit" class="bg-warning"><i class="fa fa-search"></i></button>
+              </form>
+
+              <div>
+                df
+              </div>
+
+              <div class="my-5 text-right">
+                <a href="#" style="text-decoration: none;">
+                  <h5 class="text-danger font-weight-bold" style="font-size: 15px;">
+                    See More...
+                  </h5>
+                </a>
+              </div>
+
+            </div>
+            <!-- brand names end -->
+
+               <!-- brand names -->
+            <div class="container-fluid bg-light">
+              <h5 style="font-size: 15px; padding-top: 10px;"><i class="fas fa-circle text-warning "
+                  style="font-size: 12px; padding-right:5px ;"></i> Brand Names</h5>
+
+              <form class="example  ">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit" class="bg-warning"><i class="fa fa-search"></i></button>
+              </form>
+
+              <div>
+                df
+              </div>
+
+              <div class="my-5 text-right">
+                <a href="#" style="text-decoration: none;">
+                  <h5 class="text-danger font-weight-bold" style="font-size: 15px;">
+                    See More...
+                  </h5>
+                </a>
+              </div>
+
+            </div>
+            <!-- brand names end -->
+
+               <!-- brand names -->
+            <div class="container-fluid bg-light">
+              <h5 style="font-size: 15px; padding-top: 10px;"><i class="fas fa-circle text-warning "
+                  style="font-size: 12px; padding-right:5px ;"></i> Brand Names</h5>
+
+              <form class="example  ">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit" class="bg-warning"><i class="fa fa-search"></i></button>
+              </form>
+
+              <div>
+                df
+              </div>
+
+              <div class="my-5 text-right">
+                <a href="#" style="text-decoration: none;">
+                  <h5 class="text-danger font-weight-bold" style="font-size: 15px;">
+                    See More...
+                  </h5>
+                </a>
+              </div>
+
+            </div>
+            <!-- brand names end -->
+
+               <!-- brand names -->
+            <div class="container-fluid bg-light">
+              <h5 style="font-size: 15px; padding-top: 10px;"><i class="fas fa-circle text-warning "
+                  style="font-size: 12px; padding-right:5px ;"></i> Brand Names</h5>
+
+              <form class="example  ">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit" class="bg-warning"><i class="fa fa-search"></i></button>
+              </form>
+
+              <div>
+                df
+              </div>
+
+              <div class="my-5 text-right">
+                <a href="#" style="text-decoration: none;">
+                  <h5 class="text-danger font-weight-bold" style="font-size: 15px;">
+                    See More...
+                  </h5>
+                </a>
+              </div>
+
+            </div>
+            <!-- brand names end -->
+          </div>
+          <div class="col-8">
+
+
+            <div class="card diviision-div" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+
+
+            <div class="card diviision-div" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- =================================== Shopping Cart section end  ================================================================== -->
+
+
+      <!-- =================================  Related Prodducts Category ============================================ -->
+
+      <div class="exclusive_category_div">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 my-3">
+              <h1>Related Products</h1>
+
+            </div>
+            <div class="col-md-12">
+              <div class="left_arrow weekly_dreals_left_arrow"><i class="fas fa-caret-left"></i></div>
+              <div class="right_arrow weekly_dreals_right_arrow"><i class="fas fa-caret-right"></i></div>
+              <div class="product_section" id="weekly_dreals_product_section">
+                <ul>
+                  <li>
+                    <span>
+                      <div class="product_wish_list_icon wish_list_active"><i class="fas fa-heart"></i></div>
+                      <a href="">
+                        <div class="product_design_div">
+                          <div class="product_image">
+                            <img src="{% static 'site_image/135x180.png' %}" alt="">
+                          </div>
+                          <div class="product_description">
+                            <div class="product_title">Test product name</div>
+                            <div class="product_view_rating">
+                              <div class="product_rating">
+                                <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>
+                              </div>
+                              <div class="viewer">
+                                <span>&nbsp;&nbsp;(15,000)</span>
+                              </div>
+                            </div>
+                            <div class="product_pricing">
+                              <div class="pricing">
+                                <span>&#x20B9; 700</span>
+                                <span class="original_price">&#8377; 800</span>
+                              </div>
+                              <!-- <div class="discount">
+                          <span>4% dic</span>
+                        </div> -->
+                            </div>
+                            <div class="total_save_price">
+                              <div class="save_amount">
+                                <span>Save &#8377; 800</span>
+                              </div>
+                              <div class="save_percent">
+                                <span>4% dic</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <div class="product_best_seller"><span>Best Seller</span></div>
+                      <div class="product_wish_list_icon"><i class="fas fa-heart"></i></div>
+                      <a href="">
+                        <div class="product_design_div">
+                          <div class="product_image">
+                            <img src="{% static 'site_image/135x180.png' %}" alt="">
+                          </div>
+                          <div class="product_description">
+                            <div class="product_title">Test product name</div>
+                            <div class="product_view_rating">
+                              <div class="product_rating">
+                                <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>
+                              </div>
+                              <div class="viewer">
+                                <span>&nbsp;&nbsp;(15,000)</span>
+                              </div>
+                            </div>
+                            <div class="product_pricing">
+                              <div class="pricing">
+                                <span>&#x20B9; 700</span>
+                                <span class="original_price">&#8377; 800</span>
+                              </div>
+                              <!-- <div class="discount">
+                          <span>4% dic</span>
+                        </div> -->
+                            </div>
+                            <div class="total_save_price">
+                              <div class="save_amount">
+                                <span>Save &#8377; 800</span>
+                              </div>
+                              <div class="save_percent">
+                                <span>4% dic</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- =================================  Related Products End ============================================ -->
+
+      <!-- =================================  Related Prodducts Category ============================================ -->
+
+      <div class="exclusive_category_div">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 my-3">
+              <h1>Recent View Product</h1>
+
+            </div>
+            <div class="col-md-12">
+              <div class="left_arrow weekly_dreals_left_arrow"><i class="fas fa-caret-left"></i></div>
+              <div class="right_arrow weekly_dreals_right_arrow"><i class="fas fa-caret-right"></i></div>
+              <div class="product_section" id="weekly_dreals_product_section">
+                <ul>
+                  <li>
+                    <span>
+                      <div class="product_wish_list_icon wish_list_active"><i class="fas fa-heart"></i></div>
+                      <a href="">
+                        <div class="product_design_div">
+                          <div class="product_image">
+                            <img src="{% static 'site_image/135x180.png' %}" alt="">
+                          </div>
+                          <div class="product_description">
+                            <div class="product_title">Test product name</div>
+                            <div class="product_view_rating">
+                              <div class="product_rating">
+                                <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>
+                              </div>
+                              <div class="viewer">
+                                <span>&nbsp;&nbsp;(15,000)</span>
+                              </div>
+                            </div>
+                            <div class="product_pricing">
+                              <div class="pricing">
+                                <span>&#x20B9; 700</span>
+                                <span class="original_price">&#8377; 800</span>
+                              </div>
+                              <!-- <div class="discount">
+                          <span>4% dic</span>
+                        </div> -->
+                            </div>
+                            <div class="total_save_price">
+                              <div class="save_amount">
+                                <span>Save &#8377; 800</span>
+                              </div>
+                              <div class="save_percent">
+                                <span>4% dic</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </span>
+                  </li>
+                  <li>
+                    <span>
+                      <div class="product_best_seller"><span>Best Seller</span></div>
+                      <div class="product_wish_list_icon"><i class="fas fa-heart"></i></div>
+                      <a href="">
+                        <div class="product_design_div">
+                          <div class="product_image">
+                            <img src="{% static 'site_image/135x180.png' %}" alt="">
+                          </div>
+                          <div class="product_description">
+                            <div class="product_title">Test product name</div>
+                            <div class="product_view_rating">
+                              <div class="product_rating">
+                                <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>
+                              </div>
+                              <div class="viewer">
+                                <span>&nbsp;&nbsp;(15,000)</span>
+                              </div>
+                            </div>
+                            <div class="product_pricing">
+                              <div class="pricing">
+                                <span>&#x20B9; 700</span>
+                                <span class="original_price">&#8377; 800</span>
+                              </div>
+                              <!-- <div class="discount">
+                          <span>4% dic</span>
+                        </div> -->
+                            </div>
+                            <div class="total_save_price">
+                              <div class="save_amount">
+                                <span>Save &#8377; 800</span>
+                              </div>
+                              <div class="save_percent">
+                                <span>4% dic</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    </span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- =================================  Related Products End ============================================ -->
+      {% endblock %}
+
+      {% block add_js %}
+      <script type="text/javascript" src="{% static 'user_static/js/sub_category.js' %}"></script>
+      <script type="text/javascript" src="{% static 'user_static/js/home_page.js' %}"></script>
+      {% endblock %}

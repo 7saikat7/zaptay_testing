@@ -1,0 +1,98 @@
+.login_form_section{
+  justify-content: center;
+  display: flex;
+}
+
+.login_form_div{
+  width: 50%;
+  /* box-shadow: 0px 0px 8px var(--theme-btn-bg-color); */
+  /* border: 1px solid var(--theme-btn-bg-color); */
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 15px 20px;
+  text-align: center;
+  border-radius: 7px;
+}
+
+.login_form_div > h4{
+  text-transform: capitalize;
+  color: var(--theme-btn-bg-color);
+}
+
+.login_form{
+  width: 100%;
+  padding: 5px 70px;
+  /* background: red; */
+}
+
+.login_form .btn{
+  text-align: left;
+  margin: 0px;
+  box-shadow: 0px 0px 5px #807f82;
+  margin: 12px 0px;
+}
+
+.login_form .btn i {
+  padding-right: 25px;
+}
+
+.login_form .btn:hover{
+  background-color: #0064ff;
+  border-color: #0064ff;
+  color: white;
+}
+
+.facebook_login{
+  background-color: transparent;
+  color: #0064ff;
+}
+
+.twitter_login,
+.google_login{
+  background-color: transparent;
+  color: #0064ff;
+  border-color: #0064ff;
+}
+
+.login_form form{
+  margin-top: 30px;
+}
+
+.login_form .input-group-text{
+  background-color: transparent;
+}
+
+.login_form form input{
+  padding: 12px 8px;
+  border-left: 0px;
+}
+
+.login_form form input:focus{
+  box-shadow: none;
+}
+
+.login_btn i{
+  padding: 0px !important;
+  display: none;
+  font-size: 27px;
+}
+
+.login_form form .login_btn{
+  text-align: center !important;
+  background-color: var(--theme-btn-bg-color);
+  border-color: var(--theme-btn-border-color);
+}
+
+.forgot_pwd_div{
+  margin-bottom: 30px;
+}
+
+.login_form div a{
+  color: var(--theme-btn-bg-color);
+  text-decoration: none;
+}
+
+.login_form div a:hover{
+  color: var(--theme-btn-bg-hover-color);
+  text-decoration: none;
+}

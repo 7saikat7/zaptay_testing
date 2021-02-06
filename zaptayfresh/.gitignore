@@ -1,0 +1,15 @@
+/media
+
+*/media/*
+media/*
+
+*/migrations
+*/__pycache__
+
+*.sqlite3
+
+/myvenv
+
+/vir
+
+/virtual

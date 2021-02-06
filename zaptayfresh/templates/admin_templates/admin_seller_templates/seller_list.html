@@ -1,0 +1,209 @@
+
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Add Seller{% endblock  %}
+
+{% block custom_css %}
+
+  <!-- Custom fonts for this template-->
+  <link href="/static/css/admin-side-CSS/admin-seller-css/fontawsome-free-css/all.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="/static/css/admin-side-CSS/admin-seller-css/sb-admin-2.css" rel="stylesheet">
+
+  
+  <style media="screen">
+    .error_msg
+    {
+      color: red;
+    }
+    .error_msg>ul
+    {
+      margin-bottom: 0px;
+    }
+    </style>
+{% endblock  %}
+ 
+ 
+
+{% block page_body %}
+ 
+
+
+
+
+
+  <!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+  <h1 class="h3 mb-0 text-gray-800">Seller</h1>
+</div>
+
+<div class="row">
+
+  <div class="col-lg-12">
+
+    <!-- Basic Card Example -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Seller list &nbsp; <a href="{% url 'admin_login:seller:add_seller' %}" class="btn btn-primary btn-md"><i class="fas fa-store"></i> Add new seller</a></h6>
+      </div>
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text">SELLER-</div>
+              </div>
+              <input type="text" class="form-control" id="search_number" placeholder="ID">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-search"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <span>{{ message }}</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Seller Unique Id</th>
+                <th scope="col">Seller Title</th>
+                <th scope="col">Seller Email</th>
+                <th scope="col">Seller Phone</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="seller_table_content">
+              {% if seller %}
+                {% for s in seller %}
+                  <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td style="font-size: 13px; font-weight: bold;">{{ s.seller_id }}</td>
+                    <td>{{ s.seller_title }}</td>
+                    <td>{{ s.seller_email_id }}</td>
+                    <td>{{ s.seller_phone_no }}</td>
+                    <td>
+                      {% if s.is_active %}
+                        <a href="javascript:void(0);" title="Active" class="btn btn-success btn-circle btn-sm">
+                          <i class="fas fa-check"></i>
+                        </a>
+                      {% else %}
+                        <a href="javascript:void(0);" title="Active" class="btn btn-danger btn-circle btn-sm">
+                          <i class="fas fa-times"></i>
+                        </a>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <!-- View seller info -->
+                      <a href="{% url 'admin_login:seller:seller_view' s.seller_id %}" class="btn btn-info btn-sm">
+                        <i class="fas fa-eye"></i>
+                        View
+                      </a>
+                       <!-- edir seller info -->
+                      <a href="{% url 'admin_login:seller:edit_seller' s.seller_id|lower %} " class="btn btn-warning btn-sm">
+                        <i class="fas fa-edit"></i>
+                        Edit
+                      </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+              {% else %}
+                <th scope="row" colspan="7" style="text-align: center;">No seller found</th>
+              {% endif %}
+            </tbody>
+            <tbody id="seller_search_result">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ 
+                <!-- end Page Content -+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+ 
+{% endblock %}
+ 
+
+
+
+
+
+
+{% block custom_js %}
+
+  
+      <!-- Bootstrap core JavaScript-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/bootstrapJS/jquery.min.js"></script>
+      <script src="/static/Js/admin-side-JS/admin-seller-js/bootstrapJS/bootstrap.bundle.min.js"></script>
+
+      <!-- Core plugin JavaScript-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/PluginJS/jquery.easing.js"></script>
+
+      <!-- Custom scripts for all pages-->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/sb-admin-2.js"></script>
+
+      <!-- fontawsome -->
+      <script src="/static/Js/admin-side-JS/admin-seller-js/fontawsomeJS/all.js"></script>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+      
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

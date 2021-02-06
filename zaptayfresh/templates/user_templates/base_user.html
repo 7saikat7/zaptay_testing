@@ -1,0 +1,723 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+    <!-- External Styling -->
+    <!-- <link rel="stylesheet" type="text/css" href="/static/css/all_page.css"> -->
+    <link rel="stylesheet" href="base_template.css">
+    <!-- Additional CSS -->
+{% block add_css %} {% endblock %}
+
+    <!-- External Styling -->
+    <link rel="stylesheet" type="text/css" href="/static/css/user-side-CSS/base_template.css">
+    <link rel="stylesheet" href="/static/css/user-side-CSS/base.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+
+ <script type='text/javascript'>
+  var user='{{request.user}}'
+  function getToken(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getToken('csrftoken');
+ </script>
+  <!-- font -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+ <style>
+ body{
+ font-family: 'Padauk', sans-serif;
+   
+ }
+
+.txt-primary{
+  color:#ffffff !important ;
+}
+.txt-secondary{
+  color:  #0064ff    !important;
+}
+.Bg-primary{
+  background-color: #ffffff !important ;
+}
+
+.Bg-secondary{
+  background-color:  #0064ff  !important;
+}
+#hobu:hover {
+  color: #ff9b00 !important;
+}
+#hobus:hover {
+  color: #ff9b00 !important;
+}
+
+
+
+
+
+.place::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #0064ff ;
+  opacity: 1; /* Firefox */
+}
+
+.place:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #0064ff ;
+}
+
+.place::-ms-input-placeholder { /* Microsoft Edge */
+  color: #0064ff ;
+}
+
+
+
+
+
+
+/* ======================= Header Responsive Problem Fixed! ===========================*/
+
+
+.respons{
+    height: 60px;
+     width: 40vw;
+  }
+   .resptxt{
+    font-size: 15px;
+  }
+ 
+
+/* responsove error  fix ========================================= */
+ 
+ 
+
+/* 1*/
+@media only screen and (max-width: 1286px) {
+  
+  .respons{
+    height: 65px;
+     width: 36vw;
+  }
+   .resptxt{
+    font-size: 12px;
+  }
+  .menu2{
+    margin-top:13px ;
+  }
+}
+
+
+
+/* 2*/
+@media only screen and (max-width:1222px) {
+  
+  .respons{
+    height: 75px;
+     width: 33vw;
+  }
+   .resptxt{
+    font-size: 12px;
+  }
+  .menu2{
+    margin-top:23px ;
+  }
+}
+ 
+
+/* 3*/
+@media only screen and (max-width: 1190px) {
+  
+  .respons{
+    height: 80px;
+     width: 30vw;
+  }
+   .resptxt{
+    font-size: 15px;
+  }
+  .menu2{
+    margin-top:27px ;
+  }
+}
+
+  
+/* 4*/
+@media only screen and (max-width: 1126px) {
+  
+  .respons{
+    height: 84px;
+     width: 28vw;
+  }
+   .resptxt{
+    font-size: 13px;
+  }
+  .menu2{
+    margin-top:30px ;
+  }
+}
+ 
+
+/* 5*/
+@media only screen and (max-width:1078px) {
+  
+  .respons{
+    height: 84px;
+     width: 21vw;
+  }
+   .resptxt{
+    font-size: 11px;
+  }
+  .menu2{
+    margin-top:30px ;
+  }
+}
+
+ 
+/* 6*/
+@media only screen and (max-width: 1024px) {
+  
+  .respons{
+    height: 100px;
+     width: 20vw;
+  }
+   .resptxt{
+    font-size: 10px;
+  }
+  .menu2{
+    margin-top:47px ;
+  }
+}
+
+ 
+/* responsove error  fix ============================================================= */
+
+
+@media only screen and (max-width: 990px) {
+  
+  .respons{
+    height: 100px  ;
+     width: 100%;
+  }
+ .menu2{
+    margin-top:0px ;
+  }
+}
+
+/* ======================= Header Responsive Problem Fixed! ===========================*/
+
+
+
+/* logo display  */
+ .displogo1{
+   display: none;
+ }
+@media only screen and (max-width: 990px) {
+  .displogo2{
+    display: none;
+  }
+  .displogo1{
+   display: inline;
+ }
+   
+}
+
+/* logo display end */
+
+
+
+ </style>
+  </head>
+  <body class="bg-light"   >
+
+    <!-- ================================================================================================ -->
+    <!-- =====================================  Header  ============================================= -->
+
+    <div class="header_menu " >
+      <nav class="navbar fixed-top navbar-expand-lg   Bg-primary "  style="box-shadow: 0px 4px 4px -3px rgba(0,0,0,.5) !important;"><!-- #00948f -->
+   
+        <a class="navbar-brand location" href="javascript:void(0);" data-toggle="modal" data-target="#PickUpLocation" >
+          <div></div>
+          <div class="txt-secondary">
+           
+            <p> <i class="fas fa-map-marker-alt" style="color: #0064ff; font-size: 25px;" ></i> Address <br> Enter your pin
+            <p  class="text-center"></p>
+            </p>
+            
+          </div>
+        </a>
+
+        <a class=" displogo1  navbar-brand logo_area  mr-auto ml-auto" href="/" style="width: 180px;" >
+          <!-- <img src="/static/site_image/logo.png" alt="" class="site_logo"> -->
+          <img src="{{baner_head.banner_image.url}}" alt=""  style="width:100%;" class="site_logo">
+        </a>
+
+        <button class="navbar-toggler text-dark bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fas fa-bars pt-1 txt-primary"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+          <ul class="navbar-nav mr-auto ml-auto ">
+
+
+  <a class=" displogo2 navbar-brand logo_area   " href="/" style="width: 180px;" >
+          <!-- <img src="/static/site_image/logo.png" alt="" class="site_logo"> -->
+          <img src="/media/{{baner_head.banner_image}}" alt=""  style="width:100%;" class="site_logo">
+        </a>
+
+            <li class="nav-item search_box respons"  >
+              <div class="input-group"   >
+                <div class="input-group-prepend" >
+                  
+                  <span class="input-group-text txt-secondary" id="basic-addon1"><i class="fas fa-search "  ></i></span>
+                </div>
+                <input type="text" class="form-control submit  txt-secondary place" id="search"   aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              <div class="my-1 text-center">
+                  <span class="px-2 font-weight-bold resptxt">Best Seller</span>
+                <span class="px-2 font-weight-bold resptxt ">Super Deal</span> 
+                 <span class="px-2 font-weight-bold resptxt">Membership Zoom</span>
+                  <span class="px-2 font-weight-bold resptxt">Event Cupon</span>
+                   <span class="px-2 font-weight-bold resptxt"> Send Gift</span>
+              </div>
+             
+            </li>
+            
+           
+
+            <li class="nav-item  ml-3 pt-2 mr-2" >
+         
+          <button data-toggle="modal" data-target="#ZaptayForBusiness" class="btn btn-primary" style="font-size: 15px;">Zaptay <br> For Business</button>   
+            </li>
+            <li class="nav-item  ml-3 pt-2 mr-2" >
+         
+        <a href="/b2b/"><button  class="btn btn-primary" style="font-size: 16px;">B2B</button>   </a>  
+            </li>
+          </ul>
+
+            <div class="ml-3 ">
+            <div class="btn-group icons_menu  ">
+              <a href="/wish-list/" class="btn dropdown-toggle wishlist  " id="hobus"> <!--  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" -->
+                <i class="fas fa-heart"></i>
+                <span class=" "  >0</span>
+              </a>
+            </div>
+            <div class="btn-group icons_menu">
+              <a href="/update_item/" class="btn dropdown-toggle cart  " id="hobu"> <!--  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" -->
+                <i class="fas fa-cart-plus"></i>
+                <span class=" "  >0</span>
+              </a>
+            </div>          
+           <!--  <div class="btn-group icons_menu">
+              <button type="button" class="btn btn-link dropdown-toggle notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell txt-secondary"></i>
+                <span class="  "  >35</span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" type="button">Notification 1</a>
+                <a class="dropdown-item" type="button">Notification 2</a>
+              </div>
+            </div> -->
+            {% if user.is_authenticated %}
+             {% comment %} <form action="{% url 'user_logout' %}" method='POST'>{% csrf_token %}
+              <button onclick="location.href='/logout/'" class="btn btn-primary font-weight-light" style="font-size: 16px; letter-spacing: 0px; padding: -1;">Logout</button>
+              </form> {% endcomment %}
+               {% if user.is_authenticated %}
+              <h3><p style="color:blue";>Hi {{user.username}}</p></h3>
+              {%endif%}
+            
+              <a href="{% url 'home:user_logout' %}" class="btn btn-primary font-weight-light" style="font-size: 16px; letter-spacing: 0px; padding: -1;">Logout</a>
+              {% else %}
+             <button onclick="location.href='/ShowuserLogin/'" class="btn btn-primary font-weight-light" style="font-size: 16px; letter-spacing: 0px; padding: -1;">Login</button>
+             
+              {% endif %} 
+      </div>       
+            
+          <!-- </form> -->   
+        </div> 
+      </nav>
+   
+    </div>
+
+    <!-- =====================================  Header End  ============================================= -->
+    <!-- ================================================================================================ -->
+
+    <!-- ================================================================================================ -->
+    <!-- =====================================  Header2 Start  ============================================= -->
+    <div class="menu2 d-none d-md-block   Bg-secondary pb-0 mb-0"   >
+      <nav class="navbar navbar-expand-md" >
+        <div class="container">
+          <div class="navbar-collapse collapse" id="main-nav-1">
+            <ul class="navbar-nav ">
+                {%for j in Subcat %}
+                 {% if j.category_id.main_category_name == 'featured' %}
+                      <li class="nav-item dropdown position-static">
+                    <a href="{%url 'home:subcategory' j.sub_category_id %}" class="nav-link dropdown-toggle txt-primary"> {{j.sub_category_name}}</a>
+                    <div class="dropdown-menu w-100">
+                      <div class="container ">
+                        <div class="dropdown-menu-item    ">
+                          <div class="row   ">
+                            <div class="col-sm-12 tertiary_category ">
+                             {%for i in Tercat %}
+                                 {%if j.sub_category_name == i.sub_category_id.sub_category_name %} 
+                                  <div>
+                                    <a href="{%url 'home:subcategory' j.sub_category_id %}" class=" txt-secondary"> {{i }} </a>
+                                  </div>
+                                  {%endif%}
+                               {% endfor %}
+                            </div>  
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                    {% endif %}
+                {% endfor %}
+                
+                
+              
+            </ul>
+
+            
+            <div class="dropdown mega_more">
+              <button class="btn btn-light mega_more_btn dropdown-toggle  txt-primary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                More
+              </button>
+             
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="more_mega_item" style="background-color: #ffffff;">
+                  
+                    
+                      <a class="dropdown-item txt-secondary" href="#">Made In India</a>
+                    
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- =====================================  Header2 End  ============================================= -->
+    <!-- ================================================================================================ -->
+
+
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+      {% block content %}
+
+      {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <!-- ================================================================================================= -->
+    <!-- =============================  Footer Start   ========================================= -->
+    <footer class="" style="background-color:#002e75;">    <!--  -->
+      <div class="container-fluid  "  >
+        <div class="row">
+          <div class="col-md-3">
+            <div class="footetr_logo">
+              <h1>Zaptay.com</h1>
+            </div>
+            <div class="address">
+              <span>Sodhpur, Kolkata - 7000110, West Bengal</span>
+            </div>
+            <div class="social_media">
+              <span class="title">Social media links:</span>
+              <a href="https://www.facebook.com/Zaptay" target="_blank"><div class="socila_icon facebook"><i class="fab fa-facebook-f"></i></div></a>
+              <a href="https://twitter.com/zaptay1" target="_blank"><div class="socila_icon twitter"><i class="fab fa-twitter"></i></div></a>
+              <a href="https://www.linkedin.com/in/zaptay-com-9684281b8/" target="_blank"><div class="socila_icon linkedin"><i class="fab fa-linkedin-in"></i></div></a>
+              <a href="https://www.youtube.com/channel/UCJczgstvZbrQB_6R5RBVrgg?view_as=subscriber" target="_blank"><div class="socila_icon youtube"><i class="fab fa-youtube"></i></div></a>
+              <a href="javascript:void(0);"><div class="socila_icon instagram"><i class="fab fa-instagram"></i></div></a>
+              <a href="javascript:void(0);"><div class="socila_icon whatsapp"><i class="fab fa-whatsapp"></i></div></a>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="policy_title">
+              <span>policies</span>
+            </div>
+            <div class="all_policy_details">
+              <ul>
+                <li><a href="#">Return Policy</a></li>
+                <li><a href="#">Term Policy</a></li>
+                <li><a href="#">Privacy</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="policy_title">
+              <span>Customer care</span>
+            </div>
+            <div class="all_policy_details">
+              <ul>
+                <li><a href="#">Account Login</a></li>
+                <li><a href="#">Shoping Cart</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="policy_title">
+              <span>B2B Information</span>
+            </div>
+            <div>
+              {% if user.is_authenticated %}
+              <p style="color:white";>Hi ,{{user.username}}</p>
+              {%endif%}
+            </div>
+            <div class="all_policy_details">
+              <ul>
+                <li><a href="#">Account Login</a></li>
+                <li><a href="#">Shoping Cart</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="policy_title">
+              <span>Newsletter signup</span>
+            </div>
+            <div class="all_policy_details">
+              <span>Signup for our email and be who know oir special offers! Furthermore, we will give a 15% discount on next dore after you sign up.</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="policy_title">
+              <span>Subscribe now</span>
+            </div>
+            <div class="all_policy_details subscribe">
+              <div class="input-group">
+                <input type="email" class="form-control" placeholder="Enter your email address">
+                <div class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+                              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="payment_title">
+              <span>Accepted payment option</span>
+            </div>
+            <div class="all_policy_details">
+              <div class="payment_option">
+                <span><i class="fas fa-credit-card"></i></span>
+              </div>
+              <div class="payment_option">
+                <span><i class="fas fa-wallet"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="copy_right_div">
+        <span>2020 &copy; Zaptay.com. All right reservered</span>
+      </div>
+    </footer>
+    <!-- =====================================  Footer End  ============================================= -->
+    <!-- ================================================================================================ -->
+
+    <!-- ================================================================================================= -->
+    <!-- =============================  Modal for get location   ========================================= -->
+    <div class="modal fade" id="PickUpLocation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pick your current location</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-outline-secondary auto_get_location"><i class="fas fa-search-location"></i> Click to auto detect</button>
+            <center>OR</center>
+            
+            <div class="form-group">
+              <label for="exampleFormControlInput1"></label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your pincode">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- =============================  Modal for get location End  ====================================== -->
+    <!-- ================================================================================================= -->
+
+    <!-- ================================================================================================== -->
+    <!-- ==================================  Modal Zaptay for Business ==================================== -->
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
+
+    <div class="modal fade bd-example-modal-lg" id="ZaptayForBusiness" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Request for business with zaptay</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="business_first_name">First Name</label>
+                  <input type="email" class="form-control" id="business_first_name" aria-describedby="emailHelp" placeholder="First Namel">
+                  <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="business_last_name">Last Name</label>
+                  <input type="email" class="form-control" id="business_last_name" aria-describedby="emailHelp" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="business_email">Email Address</label>
+                  <input type="email" class="form-control" id="business_email" aria-describedby="emailHelp" placeholder="Enter email">
+                  <small id="emailHelp" class="form-text text-muted">It will be your register mail id</small>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="exampleInputEmail1">Phone Number</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="business_phone">+91</span>
+                    </div>
+                    <input type="text" class="form-control" id="business_phone" placeholder="Phone number" aria-describedby="inputGroupPrepend" required>
+                    <!-- <div class="invalid-feedback">
+                      Please choose a username.
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="business_specification">Select Specification</label>
+                <select class="custom-select" id="business_specification">
+                  <option selected disabled>Choose...</option>
+                  <option value="Fashion">Fashion</option>
+                  <option value="Mobile">Mobile</option>
+                  <option value="Eletronics">Eletronics</option>
+                  <option value="Home Appliance">Home Appliance</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div> -->
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">I agree to your <a href="">Terms, Data Policy and Cookie Policy</a>. You may receive Email notifications or Call from us and can opt out at any time.</label>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ==================================  Modal Zaptay for Business end ================================ -->
+    <!-- ================================================================================================== -->
+
+    <!-- Bootstrap4 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- Custom Scripts -->
+    <!-- <script src="/static/js/login_register_popup.js"></script> -->
+    <script src=" base_template.js"></script>
+
+
+   
+    <!-- /Custom Scripts -->
+
+    
+
+<script type="text/javascript" src=" home_page.js"></script>
+   <!-- Bootstrap4 -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    {% block try_js %}{% endblock %}
+    <!-- Custom Scripts -->
+    <script src="/static/Js/user-side-js/base_template.js"></script>
+    <script src="/static/Js/user-side-js/login_register_popup.js"></script>
+    <!-- /Custom Scripts -->
+      <!-- fontawsome -->
+      <link rel="stylesheet" href="/static/Js/user-side-js/fontawsome_all.js">
+    {% block add_js %}
+    {% endblock %}
+
+  <script type='text/javascript' src="{% static 'js/cart.js' %}"></script>
+    
+{% comment %} {% block challenge_js %}
+<script type='text/javascript' src="{% static 'js/cart.js' %}"></script>
+{% endblock %} {% endcomment %}
+  </body>
+</html>
+
+ 
+ 

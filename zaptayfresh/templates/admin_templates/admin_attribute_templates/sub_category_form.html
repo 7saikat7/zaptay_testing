@@ -1,0 +1,53 @@
+{% extends 'admin_templates/base.html' %}
+{% load static %}
+
+{% block title %}Main category{% endblock %}
+
+{% block custom_css %}
+  <style>
+    .my_select_box
+    {
+      width: 100%;
+      border-radius: 50px;
+      background: transparent;
+      padding: 10px 6px;
+    }
+  </style>
+{% endblock %}
+
+{% block page_body %}
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Add sub category</h6>
+  </div>
+  <div class="card-body" style="min-height: 500px;">
+    {% if success %}
+      <span style="color: green; font-weight: 700;">Category inserted successfull</span>
+    {% endif %}
+    {% if error %}
+      <span style="color: #b73c3c; font-weight: 700;">{{error.category_name.errors|striptags}}</span>
+    {% endif %}
+    <form class="user" method="POST">
+      <div class="form-group">
+        {{ form.category_list }}
+      </div>
+      <div class="form-group">
+        <!-- <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Example: Men fashion, Women fashion"> -->
+        {{ form.sub_category_name }}
+      </div>
+      {% csrf_token %}
+      <div class="form-group row">
+        <div class="col-sm-3 mb-3 mb-sm-0">
+          <!-- <button type="submit" class="btn btn-info btn-user btn-block name="button"><strong>Show All List</strong></button> -->
+          <a href="{% url 'admin_login:category:admin_show_main_categorypage' %}" class="btn btn-info btn-user btn-block">
+            <i class="fas fa-list"></i> <strong>Show All List</strong>
+          </a>
+        </div>
+        <div class="col-sm-3 mb-3 mb-sm-0">
+          <button type="submit" class="btn btn-primary btn-user btn-block" name="button">Create sub categoty</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

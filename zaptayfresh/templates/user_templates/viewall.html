@@ -1,0 +1,918 @@
+{% extends "user_templates/base_user.html" %}
+{% load mathfilters %}
+ 
+{% load static %}
+
+<!DOCTYPE html>
+
+{% block add_css %}
+
+<!-- Sub Category Style  -->
+<link rel="stylesheet" href="/static/css/user-side-CSS/subcategory-css/subcategory.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+
+  <link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/home.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/card.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/all.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/features_category.css">
+<!-- Sub Category Style -->
+
+
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/home.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/card.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/all.css">
+<link rel="stylesheet" href="/static/css/user-side-CSS/user_home-css/features_category.css">
+<style>
+  *{
+   
+    font-weight:lighter;
+  }
+  body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #0064ff;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid#ffff;  /* creates padding around scroll thumb */
+}
+
+
+
+
+
+
+  .scrol::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.scrol::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.scrol::-webkit-scrollbar-thumb {
+  background-color: #0064ff;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  border: 3px solid transparent;  /* creates padding around scroll thumb */
+}
+
+.hovcol:hover{
+  color: wheat !important;
+}
+
+.card-hlight:hover{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.card-hlightAlwys {
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+ 
+</style>
+
+
+<!-- ============= Sub Category style ========================= -->
+<style>
+  .carousel-caption {
+   
+    position:absolute ;
+    top: -20px;
+     
+}
+
+
+
+
+.product_view_rating > .product_rating{
+  /* width: 50%; */
+  float: center;
+}
+
+ .product_view_rating > .product_rating .rating_text{
+  background-color: #0064ff;
+  padding: 1px 4px;
+  font-weight: 800;
+  color: white;
+}
+
+.product_view_rating > .product_rating .rating_text i{
+  font-size: 10px;
+}
+
+ .product_view_rating > .product_rating{
+  /* width: 50%; */
+  float: center;
+}
+
+ .product_view_rating > .product_rating .rating_text{
+  background-color: #0064ff;
+  padding: 1px 4px;
+  font-weight: 800;
+  color: white;
+}
+ .product_view_rating > .product_rating .rating_text i{
+  font-size: 10px;
+}
+
+
+
+  .scrol::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+.scrol::-webkit-scrollbar-track {
+  background: transparent;        /* color of the tracking area */
+}
+
+.scrol::-webkit-scrollbar-thumb {
+  background-color: #0064ff;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  border: 3px solid transparent;  /* creates padding around scroll thumb */
+}
+
+
+
+
+.carousel-indicators {
+  top: -20px;
+  left: -30px;
+  /* bottom: 100px; */
+  right: auto;
+  margin-bottom: 1000px;
+  color: #0064ff;
+  background-color:#0064ff ;
+}
+
+.carousel-indicators li {
+   
+  width: 10px;
+  height: 10px;
+  color: #0064ff;
+  background-color:#0064ff ;
+  border-radius: 100%;
+}
+
+.carousel-indicators li:not(:last-child) {
+  margin-right: 2px;
+  color: #0064ff;
+  background-color:#0064ff ;
+}
+
+
+
+/* price range Bar */
+ #formControlRange {
+  background: linear-gradient(to right, #d3ce90 0%, #c6fcbb 51%, #c6fcbb 50%, red 100%);
+  border: ;
+  border-radius: 8px;
+  height: 7px;
+  width: 100%;
+  
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+}
+
+
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 20px; /* Set a specific slider handle width */
+  height: 20px; /* Slider handle height */
+  background: #0064ff; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 10px;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+/* price range  End */
+.card-hlight:hover{
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.shadow{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+}
+</style>
+<!-- ============================ Subcategory style end ========================================= -->
+{% endblock %}
+
+{% block content %}
+
+
+ 
+
+    <!-- ================================================================================================ -->
+    <!-- =====================================  Body Start  ============================================= -->
+    <div class="body_content_main pt-0 mt-0">
+ 
+<!-- ====================================================================================================================
+============================================== Banner part end ==================================================================
+========================================================================================================================= -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========================================================================================================================== -->
+<!-- =================================  New Design Stared From (21-Sep-2020) By SD. ============================================ -->
+<!-- ========================================================================================================================== -->
+ 
+ 
+
+  <!-- ===================================  Breadcrumbs start  ================================================================ -->
+  <div class="breadcrumbs_div ">
+    <div class="container-fluid ">
+      <div class="row ">
+        <div class="col-md-12 ">
+          <div class="breadcrumbs shadow">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="breadcrumbs_title " style="background-color: #0064ff; width:287px; height: 30px;">
+                  <div class="sub_category_title">
+                    <span class="text-light">{{offerDetails.offer_title|capfirst }}  </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="breadcrumbs_childs">
+                 <!--  <ul>
+                    <li>
+                      <a href="{% url 'home:homepage' %}"><i class="fas fa-home text-primary"></i></a>
+                    </li>
+                    <li>
+                      <a href="#"><span class="text-primary">{{CurrentSubCat.sub_category_name}} </span></a>
+                    </li>
+                  </ul> -->
+                  <!-- <div class="total_product_showing">Showing 1-40 products of 150 Products
+                </div> -->
+                      
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <!-- ===================================  Breadcrumbs end  ================================================================== -->
+  
+  
+
+
+ 
+ <!-- products -->
+ <div class="container-fluid">
+<div class="row">
+   <div class="col-3"> 
+      <!-- Colors  ------------------>
+    <div class="card mt-2 shadow" style="width: 18rem;">
+      <div class="card-body">
+         <!--section Title -->
+        <div  >
+         <h6> <span class="text-primary">⬤</span> Colors</h6>
+        <!--   <hr style="color: #0064ff; background-color: #0064ff;"> -->
+        </div>
+        <!--section Title -->
+       
+        <!-- Search bar -->
+        <div class="input-group md-form form-sm form-2 pl-0 my-3">
+          <input class="form-control my-0 py-1 red-border" type="text" style="height: 30px;" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <span class="input-group-text red lighten-3 bg-primary" id="basic-text1"><i class="fas fa-search text-light "
+                aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <!-- Search bar end -->
+
+
+        
+        <p class="card-text">
+          <div class="row">
+            {%for c in col%}
+            <div class="col-4 mt-1"> <img src="{{c.ColorImage.url}}" height="40px" width="40px" alt="" onclick="Colorfilter('{{offerDetails.offer_custom_id}}','{{c.color_id}}','12')"></div>
+            {%endfor%}
+          </div>
+
+        </p>
+        <span class="float-right text-primary">See More</span>
+      </div>
+    </div>
+    <!-- Colors end -->
+
+     <!-- price range  ----------------------------->
+    <div class="card mt-2 shadow" style="width: 18rem;">
+      <div class="card-body">
+         <!--section Title -->
+        <div class="mb-5" >
+         <h6> <span class="text-primary  " >⬤</span> Price Range</h6>
+        <!--   <hr style="color: #0064ff; background-color: #0064ff; height: 1px;"> -->
+        </div>
+        <!--section Title -->
+       
+        
+
+
+        <div>
+          <form>
+            <div class="form-group">
+              
+              <input type="range" min="0" max="10000" class="form-control-range slider" id="formControlRange">
+              <label for="formControlRange" class="mt-1"> <span class="text-success float-left font-weight-bold">₹ 0</span>&nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;    <span class="  float-right font-weight-bold" style="color: rgb(211, 122, 5);"> ₹10,000</span></label>
+            </div>
+          </form>
+         <div class="text-center text-primary mb-3"> <span id="myValue"></span></div>  
+          
+        </div>
+
+        <div class="row">
+          <div class="col-6"><button class="btn btn-primary w-100 mr-2  "   onclick=" pricefilter('{{offerDetails.offer_custom_id}}', '12')"> Apply</button> </div>
+          <div class="col-6"><button class="btn btn-primary w-100">Clear</button></div>
+        </div>
+        
+      </div>
+    </div>
+    <!-- price range end -->
+   </div>
+
+
+   <div class="col-9">
+     <div class="row  scrol" style="overflow-y:scroll; height: 600px;" id="PROD">
+   
+      {%for of in offers%}
+         <div class="col-3 mt-2" onclick="addProductViews('${data[i].prod_custom_id}')" >
+          <a href="{% url 'home:singleproduct' of.prod_custom_id %}" style="text-decoration: none;">
+        <div class="card text-dark card-hlight" style="width: 13rem;">
+            <div style="position: absolute; float: right; left: 167px; top: 7px; font-size: 30px;" > <i class="far fa-heart"></i></div>
+
+            <div style="background-color: #0064ff; color: #ffffff;  position: absolute;  float: left; left: 0px; top: 10px; font-size: 16px;" > <span style="padding-left:10px ; padding-right: 5px;">Best Seller</span>  </div>
+
+          <img   src="{{of.product_image1.url}}" class="card-img-top px-2 pt-2" height="250px" alt="...">
+          <div class="card-body pb-1" style="padding-top:3px; margin-top:3px;">
+            <h5 class="card-title py-0 my-0 text-truncate"> {{of.prod_title}} </h5>
+
+                <div class="product_view_rating my-1" style="padding-top:0px; margin-top:0px;">
+                  <div class="product_rating">
+                    <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;( {{of.Cutomer_Views|truncatechars:6}})  &nbsp; 
+                  </div>
+                </div>
+
+            <p class="card-text" style="padding-top:0px; margin-top:0px;"> <span class="font-weight-bold text-dark">&#8377;  {{of.extra_offer_price}} </span> <del class="text-dark">&#8377;   {{of.m_price}} </del>  <span class="text-danger pl-1"> {% with frst=100|div:of.m_price scnd=of.m_price|sub:of.extra_offer_price %} {{ frst|mul:scnd|floatformat:0 }}% {% endwith %}</span>  </p>
+          </div>
+        </div>
+        </a>
+            
+          </div>
+      {%endfor%}  
+
+     
+
+
+
+     </div>
+     <div class="my-3 text-center" id="butn"><button class="btn btn-primary" onclick="offerSeeMore('{{offerDetails.offer_custom_id}}', '12')">See More</button></div>
+   </div>
+ </div>
+ </div>
+ 
+ <!-- products end -->
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+ 
+ 
+
+    </div>
+    <!-- =====================================  Body End  ============================================= -->
+    <!-- ================================================================================================ -->
+
+
+
+ 
+
+{% endblock %}
+
+ 
+{% block add_js %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+  <!-- <script src="{% static 'js/libs/slick-master/slick/slick.js' %}"></script> -->
+
+ 
+<script src="/static/Js/user-side-js/user_home-js/card.js"></script>
+<script src="/static/Js/user-side-js/user_home-js/all.js"></script>
+  <script>
+    $('.featured_category_slider').slick({
+      dots: false,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      touchMove: false,
+      autoplay: true,
+      autoplaySpeed: 1000,
+      swipe:true,
+      prevArrow:'<button type="button" data-role="none" class="slick-prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></button>',
+      nextArrow:'<button type="button" data-role="none" class="slick-next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>',
+  });
+  </script>
+ 
+  <script>
+$('.featured_category_left_arrow_features').on("click", () => {
+  document.getElementById('fetured_category_section').scrollLeft -= 600;
+});
+
+$('.featured_category_right_arrow_features').on("click", () => {
+  document.getElementById('fetured_category_section').scrollLeft += 600;
+});</script>
+<script>
+  function getval(valban){
+    return valban
+  }
+$(document).ready(home());
+</script>
+  
+ <script>
+
+  $(document).ready(function(){
+ rangePriceFilter()
+});
+
+
+
+  
+ </script>
+
+ <script>
+ 
+
+  const truncateString = (string, maxLength = 50) => {
+  if (!string) return null;
+  if (string.length <= maxLength) return string;
+  return `${string.substring(0, maxLength)}...`;
+};
+
+function abbreviateNumber(value) {
+    var newValue = value;
+    if (value >= 1000) {
+        var suffixes = ["", "k", "m", "b","t"];
+        var suffixNum = Math.floor( (""+value).length/3 );
+        var shortValue = '';
+        for (var precision = 2; precision >= 1; precision--) {
+            shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+            var dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+            if (dotLessShortValue.length <= 2) { break; }
+        }
+        if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
+        newValue = shortValue+suffixes[suffixNum];
+    }
+    return newValue;
+}
+
+   function rangePriceFilter() {
+  var myRange = document.querySelector('#formControlRange');
+  console.log(myRange);
+var myValue = document.querySelector('#myValue');
+  var myUnits = '₹';
+  var off = myRange.offsetWidth / (parseInt(myRange.max) - parseInt(myRange.min));
+var px =  ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetParent.offsetWidth / 2);
+
+  myValue.parentElement.style.left = px + 'px';
+  myValue.parentElement.style.top = myRange.offsetHeight + 'px';
+  myValue.innerHTML =  myUnits + ' ' + myRange.value;
+
+  myRange.oninput =function(){
+    var px = ((myRange.valueAsNumber - parseInt(myRange.min)) * off) - (myValue.offsetWidth / 2);
+    myValue.innerHTML =  myUnits + ' ' + myRange.value;
+    myValue.parentElement.style.left = px + 'px';
+  };
+}
+ </script>
+
+
+<!-- ================================ main Code ================================= -->
+<script>
+visible = 12
+  function offerSeeMore(offerID,add) {
+    console.log(offerID)
+   
+ 
+     if (add == '12') {
+      visible += 12;
+      console.log(visible);
+     }
+    
+     
+     $.ajax({
+    type: 'POST',
+    data: {'id': offerID, 'visible':visible},
+    url: '/viewall_offer/',
+   
+      
+     success: function (response) {
+     
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      output = ''
+       for (i = 0; i < data.length; i++){
+         
+    
+       output +=`  
+
+         <div class="col-3 mt-2" onclick="addProductViews('${data[i].prod_custom_id}')" >
+          <a href="/singleproduct/${data[i].prod_custom_id}" style="text-decoration: none;">
+        <div class="card text-dark card-hlight" style="width: 13rem;">
+            <div style="position: absolute; float: right; left: 167px; top: 7px; font-size: 30px;" > <i class="far fa-heart"></i></div>
+
+            <div style="background-color: #0064ff; color: #ffffff;  position: absolute;  float: left; left: 0px; top: 10px; font-size: 16px;" > <span style="padding-left:10px ; padding-right: 5px;">Best Seller</span>  </div>
+
+          <img   src="/media/${data[i].product_image1}" class="card-img-top px-2 pt-2" height="250px" alt="...">
+          <div class="card-body" style="padding-top:3px; margin-top:3px;">
+            <h5 class="card-title text-truncate">${truncateString(data[i].prod_title, 16)}  </h5>
+
+                <div class="product_view_rating my-2" style="padding-top:0px; margin-top:0px;">
+                  <div class="product_rating">
+                    <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(${abbreviateNumber(data[i].Cutomer_Views) }  )  &nbsp; 
+                  </div>
+                </div>
+
+            <p class="card-text" style="padding-top:0px; margin-top:0px;"> <span class="font-weight-bold text-dark">&#8377;  ${Math.trunc(data[i].extra_offer_price)}   </span> <del class="text-dark">&#8377; ${Math.trunc(data[i].m_price)}    </del>  <span class="text-danger pl-1">   ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].extra_offer_price))}  </span>  </p>
+          </div>
+        </div>
+        </a>
+            
+          </div>
+
+         `;
+ 
+      }
+       
+      
+  
+           document.getElementById("PROD").innerHTML+= output 
+       
+     
+    
+    }
+     });
+     
+
+}
+
+
+
+
+/* ============= Price Filter ============================= */
+Pvisible = 0
+function pricefilter(offerID,add){
+  var myRange = document.querySelector('#formControlRange');
+  console.log('rangte')
+  console.log(myRange.value)
+   if (add == '12') {
+      Pvisible  = 12;
+      
+     }
+     console.log(Pvisible)
+
+  
+
+       $.ajax({
+    type: 'POST',
+    data: {'id': offerID, 'visible':Pvisible},
+    url: '/viewall_offer/',
+   
+      
+     success: function (response) {
+     
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      output = ''
+       for (i = 0; i < data.length; i++){
+         
+        if(myRange.value <=   Math.trunc(data[i].off_price) ){
+
+       
+    
+       output +=`  
+
+         <div class="col-3 mt-2" onclick="addProductViews('${data[i].prod_custom_id}')" >
+          <a href="/singleproduct/${data[i].prod_custom_id}" style="text-decoration: none;">
+        <div class="card text-dark card-hlight" style="width: 13rem;">
+            <div style="position: absolute; float: right; left: 167px; top: 7px; font-size: 30px;" > <i class="far fa-heart"></i></div>
+
+            <div style="background-color: #0064ff; color: #ffffff;  position: absolute;  float: left; left: 0px; top: 10px; font-size: 16px;" > <span style="padding-left:10px ; padding-right: 5px;">Best Seller</span>  </div>
+
+          <img   src="/media/${data[i].product_image1}" class="card-img-top px-2 pt-2" height="250px" alt="...">
+          <div class="card-body" style="padding-top:3px; margin-top:3px;">
+            <h5 class="card-title text-truncate">${truncateString(data[i].prod_title, 16)}  </h5>
+
+                <div class="product_view_rating my-2" style="padding-top:0px; margin-top:0px;">
+                  <div class="product_rating">
+                    <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(${abbreviateNumber(data[i].Cutomer_Views) }  )  &nbsp; 
+                  </div>
+                </div>
+
+            <p class="card-text" style="padding-top:0px; margin-top:0px;"> <span class="font-weight-bold text-dark">&#8377;  ${Math.trunc(data[i].extra_offer_price)}   </span> <del class="text-dark">&#8377; ${Math.trunc(data[i].m_price)}    </del>  <span class="text-danger pl-1">   ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].extra_offer_price))}  </span>  </p>
+          </div>
+        </div>
+        </a>
+            
+          </div>
+
+         `;
+  }
+      }
+       
+      
+      if(Pvisible <= 12){
+           document.getElementById("PROD").innerHTML = output 
+           document.getElementById("butn").innerHTML = `<button class="btn btn-primary" onclick="pricefilterMore('{{offerDetails.offer_custom_id}}', '12')">See More</button>`
+       }
+       
+     
+    
+    }
+     });
+
+}
+
+function pricefilterMore(offerID,add){
+  var myRange = document.querySelector('#formControlRange');
+  console.log('rangte')
+  console.log(myRange.value)
+   if (add == '12') {
+      Pvisible  += 12;
+      
+     }
+     console.log(Pvisible)
+ 
+
+       $.ajax({
+    type: 'POST',
+    data: {'id': offerID, 'visible':Pvisible},
+    url: '/viewall_offer/',
+   
+      
+     success: function (response) {
+     
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      output = ''
+       for (i = 0; i < data.length; i++){
+     
+        if(myRange.value <=   Math.trunc(data[i].off_price) ){
+
+       
+    
+       output +=`  
+
+         <div class="col-3 mt-2" onclick="addProductViews('${data[i].prod_custom_id}')" >
+          <a href="/singleproduct/${data[i].prod_custom_id}" style="text-decoration: none;">
+        <div class="card text-dark card-hlight" style="width: 13rem;">
+            <div style="position: absolute; float: right; left: 167px; top: 7px; font-size: 30px;" > <i class="far fa-heart"></i></div>
+
+            <div style="background-color: #0064ff; color: #ffffff;  position: absolute;  float: left; left: 0px; top: 10px; font-size: 16px;" > <span style="padding-left:10px ; padding-right: 5px;">Best Seller</span>  </div>
+
+          <img   src="/media/${data[i].product_image1}" class="card-img-top px-2 pt-2" height="250px" alt="...">
+          <div class="card-body" style="padding-top:3px; margin-top:3px;">
+            <h5 class="card-title text-truncate">${truncateString(data[i].prod_title, 16)}  </h5>
+
+                <div class="product_view_rating my-2" style="padding-top:0px; margin-top:0px;">
+                  <div class="product_rating">
+                    <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(${abbreviateNumber(data[i].Cutomer_Views) }  )  &nbsp; 
+                  </div>
+                </div>
+
+            <p class="card-text" style="padding-top:0px; margin-top:0px;"> <span class="font-weight-bold text-dark">&#8377;  ${Math.trunc(data[i].extra_offer_price)}   </span> <del class="text-dark">&#8377; ${Math.trunc(data[i].m_price)}    </del>  <span class="text-danger pl-1">   ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].extra_offer_price))}  </span>  </p>
+          </div>
+        </div>
+        </a>
+            
+          </div>
+
+         `;
+  }
+      }
+       
+      
+      
+           document.getElementById("PROD").innerHTML += output 
+     
+       
+     
+    
+    }
+     });
+
+}
+/* ============= Price Filter end ============================= */
+
+
+
+
+/* ========================== Filter Section color ======================================= */
+Cvisible = 0
+function Colorfilter(offerID,colid,add){
+  console.log('color filter')
+  console.log(colid)
+  console.log(offerID)
+   if (add == '12') {
+      Cvisible  = 12;
+      
+     }
+    
+     console.log(Cvisible)
+
+  
+
+       $.ajax({
+    type: 'POST',
+    data: {'id': offerID, 'visible':Cvisible, 'col':colid},
+    url: '/viewallofferscolFilter/',
+   
+      
+     success: function (response) {
+     
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      output = ''
+       for (i = 0; i < data.length; i++){
+         
+         
+
+       
+    
+       output +=`  
+
+         <div class="col-3 mt-2" onclick="addProductViews('${data[i].prod_custom_id}')" >
+          <a href="/singleproduct/${data[i].prod_custom_id}" style="text-decoration: none;">
+        <div class="card text-dark card-hlight" style="width: 13rem;">
+            <div style="position: absolute; float: right; left: 167px; top: 7px; font-size: 30px;" > <i class="far fa-heart"></i></div>
+
+            <div style="background-color: #0064ff; color: #ffffff;  position: absolute;  float: left; left: 0px; top: 10px; font-size: 16px;" > <span style="padding-left:10px ; padding-right: 5px;">Best Seller</span>  </div>
+
+          <img   src="/media/${data[i].product_image1}" class="card-img-top px-2 pt-2" height="250px" alt="...">
+          <div class="card-body" style="padding-top:3px; margin-top:3px;">
+            <h5 class="card-title text-truncate">${truncateString(data[i].prod_title, 16)}  </h5>
+
+                <div class="product_view_rating my-2" style="padding-top:0px; margin-top:0px;">
+                  <div class="product_rating">
+                    <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(${abbreviateNumber(data[i].Cutomer_Views) }  )  &nbsp; 
+                  </div>
+                </div>
+
+            <p class="card-text" style="padding-top:0px; margin-top:0px;"> <span class="font-weight-bold text-dark">&#8377;  ${Math.trunc(data[i].extra_offer_price)}   </span> <del class="text-dark">&#8377; ${Math.trunc(data[i].m_price)}    </del>  <span class="text-danger pl-1">   ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].extra_offer_price))}  </span>  </p>
+          </div>
+        </div>
+        </a>
+            
+          </div>
+
+         `;
+  
+      }
+       
+      
+      if(Pvisible <= 12){
+           document.getElementById("PROD").innerHTML = output 
+           document.getElementById("butn").innerHTML = `<button class="btn btn-primary" onclick="ColorfilterMore('${offerID}','${colid}', '12')">See More</button>`
+       }else{
+          document.getElementById("PROD").innerHTML += output 
+       }
+       
+     
+    
+    }
+     });
+
+}
+
+function ColorfilterMore(offerID,colid,add){
+  var myRange = document.querySelector('#formControlRange');
+  console.log('rangte')
+  console.log(myRange.value)
+   if (add == '12') {
+      Cvisible  += 12;
+      
+     }
+     console.log(Cvisible)
+ 
+
+       $.ajax({
+    type: 'POST',
+    data: {'id': offerID,'visible':Cvisible, 'col':colid},
+    url: '/viewallofferscolFilter/',
+   
+      
+     success: function (response) {
+     
+      
+      console.log(response );
+      var data = response.prod;
+      console.log(data)
+      output = ''
+       for (i = 0; i < data.length; i++){
+      
+       
+    
+       output +=`  
+
+         <div class="col-3 mt-2" onclick="addProductViews('${data[i].prod_custom_id}')" >
+          <a href="/singleproduct/${data[i].prod_custom_id}" style="text-decoration: none;">
+        <div class="card text-dark card-hlight" style="width: 13rem;">
+            <div style="position: absolute; float: right; left: 167px; top: 7px; font-size: 30px;" > <i class="far fa-heart"></i></div>
+
+            <div style="background-color: #0064ff; color: #ffffff;  position: absolute;  float: left; left: 0px; top: 10px; font-size: 16px;" > <span style="padding-left:10px ; padding-right: 5px;">Best Seller</span>  </div>
+
+          <img   src="/media/${data[i].product_image1}" class="card-img-top px-2 pt-2" height="250px" alt="...">
+          <div class="card-body" style="padding-top:3px; margin-top:3px;">
+            <h5 class="card-title text-truncate">${truncateString(data[i].prod_title, 16)}  </h5>
+
+                <div class="product_view_rating my-2" style="padding-top:0px; margin-top:0px;">
+                  <div class="product_rating">
+                    <span class="rating_text">3.5 <i class="fas fa-star"></i> </span>&nbsp;&nbsp;(${abbreviateNumber(data[i].Cutomer_Views) }  )  &nbsp; 
+                  </div>
+                </div>
+
+            <p class="card-text" style="padding-top:0px; margin-top:0px;"> <span class="font-weight-bold text-dark">&#8377;  ${Math.trunc(data[i].extra_offer_price)}   </span> <del class="text-dark">&#8377; ${Math.trunc(data[i].m_price)}    </del>  <span class="text-danger pl-1">   ${Math.trunc((100/data[i].m_price)*(data[i].m_price-data[i].extra_offer_price))}  </span>  </p>
+          </div>
+        </div>
+        </a>
+            
+          </div>
+
+         `;
+     }
+       
+      
+      
+           document.getElementById("PROD").innerHTML += output 
+     
+       
+     
+    
+    }
+     });
+
+}
+/* ========================== Filter Section color end ======================================= */
+
+</script>
+<!-- ================================ main Code end================================= -->
+{% endblock %}
+
